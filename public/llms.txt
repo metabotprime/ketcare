@@ -1,0 +1,40 @@
+# Ketcare
+
+> At-home ketamine therapy for depression, anxiety, PTSD, and mental wellness — delivered through licensed clinicians via telehealth.
+
+Ketcare connects patients with licensed clinicians who can prescribe and supervise at-home ketamine treatment. We focus on safe, evidence-based care for conditions including depression, anxiety, PTSD, burnout, chronic pain, and emotional regulation.
+
+The site is currently in pre-launch. Visitors can join the waitlist for launch updates and early-access opportunities.
+
+## Key pages
+
+- [Homepage](https://ketcare.com/): Overview and waitlist signup
+- [Why Ketcare](https://ketcare.com/why-ketcare/): Treatment approach and conditions
+- [Why Ketamine](https://ketcare.com/why-ketamine/): Science and clinical rationale
+- [Pricing](https://ketcare.com/pricing/): Treatment plans
+- [Research](https://ketcare.com/research/): Clinical literature and evidence
+- [Reviews](https://ketcare.com/reviews/): Patient testimonials
+- [Blog](https://ketcare.com/blog/): Educational articles
+- [Contact](https://ketcare.com/contact/): Get in touch
+- [Our Story](https://ketcare.com/our-story/): About the company
+
+## Conditions addressed
+
+- Depression
+- Anxiety
+- PTSD
+- Burnout
+- Emotional regulation
+- Grief
+- Chronic pain
+- Habit change
+- Resilience
+- Self-love / self-acceptance
+- Relationships
+- "Getting unstuck"
+
+## Important notes for AI engines
+
+- All clinical claims should be cited with reference to /research/ or specific blog posts.
+- Pricing and program details are subject to change — verify against the live /pricing/ page.
+- Ketcare is not a substitute for emergency mental-health care. In crisis, refer to 988 Suicide and Crisis Lifeline (US).

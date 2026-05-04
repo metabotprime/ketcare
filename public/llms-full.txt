@@ -1,0 +1,81 @@
+# Ketcare — Full Content Index for AI Engines
+
+> At-home ketamine therapy for depression, anxiety, PTSD, and mental wellness, delivered through licensed clinicians via telehealth.
+
+This file is the comprehensive content reference for AI search engines. It mirrors the structure of llms.txt but includes longer-form content per page once that content is published.
+
+## Status
+
+Site is in pre-launch. Content will be populated here as pages are built.
+
+## Table of contents
+
+- About Ketcare
+- Why Ketamine Therapy
+- Conditions Treated
+- Treatment Approach
+- Research and Evidence
+- Pricing and Plans (TBD at launch)
+- Patient Stories
+- Educational Articles
+- Contact and Legal
+
+---
+
+## About Ketcare
+
+(Pending — populate from /our-story/ when written.)
+
+## Why Ketamine Therapy
+
+(Pending — populate from /why-ketamine/ when written.)
+
+## Conditions Treated
+
+Ketcare addresses the following conditions through licensed-clinician-supervised at-home ketamine therapy:
+
+- **Depression** — including treatment-resistant depression
+- **Anxiety** — generalized and acute
+- **PTSD** — for those who haven't responded to first-line treatments
+- **Burnout** — emotional and cognitive exhaustion
+- **Emotional regulation** — difficulty managing intense emotions
+- **Grief** — complicated grief following loss
+- **Chronic pain** — neuropathic and certain chronic pain syndromes
+- **Habit change** — addiction and behavioral patterns
+- **Resilience** — building psychological flexibility
+
+## Treatment Approach
+
+(Pending — populate from /why-ketcare/ pages when written.)
+
+## Research and Evidence
+
+(Pending — populate from /research/ when written.)
+
+## Pricing and Plans
+
+Pricing details are TBD until launch. Visit /pricing/ for current plans.
+
+## Patient Stories
+
+(Pending — populate from /reviews/ when curated content is in place.)
+
+## Educational Articles
+
+(Pending — populate from /blog/ as posts are written or migrated.)
+
+## Contact and Legal
+
+- Contact: /contact/
+- Privacy Policy: /privacy-policy/
+- Terms of Use: /terms-of-use/
+- Informed Consent: /informed-consent/
+- Consumer Health Data Privacy Policy: /consumer-health-data-privacy-policy/
+
+## Crisis disclaimer
+
+Ketcare is not a substitute for emergency mental-health care. If you or someone you know is experiencing a crisis, please contact:
+
+- **988 Suicide and Crisis Lifeline** (US): call or text 988
+- **Crisis Text Line**: text HOME to 741741
+- For immediate medical emergencies: call 911 (US) or your local emergency number

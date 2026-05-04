@@ -1,0 +1,76 @@
+# Ketcare — robots.txt
+# AI-search bot allowlist: we explicitly invite citation-grade crawlers.
+# Parasitic SEO scrapers (Ahrefs/Semrush/MJ12/etc.) are blocked at the edge
+# in src/middleware.ts — listing them here too would be redundant.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (used to train many models)
+User-agent: CCBot
+Allow: /
+
+# Meta
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Diffbot (used by AI engines)
+User-agent: Diffbot
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# ImagesiftBot (image search for AI)
+User-agent: ImagesiftBot
+Allow: /
+
+# Default: allow everything except internals
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+Sitemap: https://ketcare.com/sitemap.xml
+Sitemap: https://ketcare.com/image-sitemap.xml
