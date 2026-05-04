@@ -99,6 +99,12 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       changefreq: 'monthly',
       priority: 0.8,
     })),
+    {
+      url: `${SITE_URL}/reviews/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
     // More entries get added here as we build pages.
   ];
 }

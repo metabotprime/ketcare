@@ -9,10 +9,6 @@
  *
  * Hero `headline` supports an inline <em>...</em> wrapper for the italic-serif
  * accent on trailing words (the section header pattern from the brief).
- *
- * Body `sections` are seeded with brand-aligned placeholders flagged TODO.
- * Real content goes here when copywriter delivers (or AI-drafted from
- * .crawl/pages/why-ketcare_*.html).
  */
 
 export type Condition = {
@@ -48,15 +44,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with depression',
-        body: 'TODO: replace with real copy. Ketamine works on the glutamate system, which regulates neuroplasticity. Many patients see improvement within hours — not weeks like traditional antidepressants.',
+        body: "Standard antidepressants work on serotonin, gradually. Ketamine works on glutamate — the brain's most abundant neurotransmitter — and acts within hours instead of weeks. The window it opens is when real change becomes possible, especially when paired with structured therapeutic support. For many of our patients, that window is the first time in years they remember what 'feeling like myself' actually means.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Your journey starts with a clinical intake to confirm fit, then a structured series of at-home sessions with a clinician available throughout. Integration support continues between sessions.',
+        body: 'Treatment begins with a clinical intake to confirm fit and design a protocol around your history. Sessions take place at home in a calm environment you control, with a licensed clinician available throughout. Between sessions, integration support helps turn what surfaced during treatment into something that holds — not just a good week, but a different baseline.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Ketcare for depression is built for adults who haven\'t found relief in standard therapy or medication, or who want a faster path to feeling like themselves again.',
+        body: "Adults navigating major depression, treatment-resistant depression, or persistent low mood that hasn't responded to traditional approaches. Our intake is rigorous because Ketcare isn't right for everyone — and being honest about fit is part of how we deliver outcomes our patients trust.",
       },
     ],
   },
@@ -75,15 +71,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with anxiety',
-        body: 'TODO: replace with real copy. Beyond symptom management, ketamine therapy creates an opening for your nervous system to recalibrate — addressing the root patterns instead of just dampening them.',
+        body: "Anxiety isn't a single thing — it's a pattern that gets reinforced every time your nervous system rehearses the worst case. Ketamine acts on the glutamate system to soften that rehearsal, creating space between stimulus and reaction. That space is where new patterns can take root, with the right support around them.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Structured sessions in a calm at-home environment, supervised by licensed clinicians, with integration support between sessions.',
+        body: 'Sessions take place at home in a setting you control, with a clinician available throughout. The protocol is built around your specific anxiety pattern — generalized, social, panic, or post-event — and integration between sessions helps you carry the calmer baseline forward into real life.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults with generalized anxiety, social anxiety, or anxiety that hasn\'t responded fully to standard treatments.',
+        body: "Adults with generalized anxiety, panic, social anxiety, or anxiety that hasn't responded fully to standard medications and therapy. Our intake confirms fit before any treatment begins.",
       },
     ],
   },
@@ -102,15 +98,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with PTSD',
-        body: 'TODO: replace with real copy. Ketamine\'s effects on memory reconsolidation and neuroplasticity offer a window for therapy and integration that traditional approaches don\'t open as quickly.',
+        body: "Trauma lives in the nervous system, not just the memory. Standard talk therapy works on the meaning of what happened; ketamine works on the body's storage of it. Paired with trauma-informed integration, it can move what years of effort haven't been able to.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Carefully paced sessions, trauma-informed clinicians, and integration support tailored to your history.',
+        body: 'We pace this slowly. The intake is longer for trauma work, and the early sessions are designed to build trust before depth. A trauma-informed clinician is available throughout each session and during integration. You set the pace; we provide the structure.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults with PTSD or complex trauma who haven\'t found full relief through first-line treatments and want a structured, supervised approach.',
+        body: "Adults with PTSD, complex trauma, or persistent trauma symptoms that haven't lifted despite first-line treatments. Our intake screens carefully — for some kinds of acute trauma, ketamine isn't the right next step, and we'll tell you that directly.",
       },
     ],
   },
@@ -129,15 +125,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with burnout',
-        body: 'TODO: replace with real copy. Burnout has measurable neurological signatures. Ketamine helps reset stress response patterns and rebuild emotional reserves.',
+        body: "Burnout has measurable neurological signatures — chronic stress reshapes the brain regions responsible for motivation, mood, and reward. Ketamine creates an opening for those systems to recover, which is something rest alone often can't do once the depletion has gone deep enough.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. A protocol designed for high-functioning adults navigating burnout — flexible scheduling, clinician check-ins, integration that fits a real life.',
+        body: 'Designed for high-functioning adults navigating burnout — flexible session scheduling, clinician check-ins between sessions, and integration that fits a real life with real obligations. Not a retreat. Not a pause. A reset.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Professionals, caregivers, and anyone running on fumes who needs more than a vacation can fix.',
+        body: "Professionals, caregivers, parents, founders — anyone running on empty for long enough that vacations don't touch it. Adults whose burnout has crossed into territory that lifestyle changes alone can't reach.",
       },
     ],
   },
@@ -149,22 +145,22 @@ export const CONDITIONS: Condition[] = [
       'Build steadier emotional ground. Ketamine therapy helps you respond rather than react — supervised, at-home, evidence-backed.',
     hero: {
       eyebrow: 'Ketcare for emotional regulation',
-      headline: 'Respond, don\'t react. <em>Build steadier ground.</em>',
+      headline: "Respond, don't react. <em>Build steadier ground.</em>",
       subhead:
-        'When emotions feel like waves you can\'t see coming, regulation feels impossible. Ketamine therapy creates space between stimulus and response — and gives you tools to keep that space open.',
+        "When emotions feel like waves you can't see coming, regulation feels impossible. Ketamine therapy creates space between stimulus and response — and gives you tools to keep that space open.",
     },
     sections: [
       {
         heading: 'How ketamine helps with emotional regulation',
-        body: 'TODO: replace with real copy. Ketamine\'s effect on the prefrontal cortex supports the executive function involved in emotional regulation, paired with integration practice.',
+        body: "Regulation isn't about suppressing feelings — it's about expanding the window in which you can stay present with them. Ketamine supports that expansion by acting on the prefrontal cortex, the brain region most involved in choosing your response instead of being chosen by it.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Structured sessions with integration coaching focused on real-world regulation skills.',
+        body: 'Sessions paired with integration coaching focused on real-world regulation skills — not theoretical insight, but specific tools you can use when the wave hits. Your clinician adjusts the protocol based on how regulation shows up in your actual life.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults dealing with emotional volatility, intense reactivity, or difficulty regulating after stress.',
+        body: 'Adults dealing with emotional volatility, intense reactivity, difficulty regulating after stress, or the kind of dysregulation that keeps undoing other progress.',
       },
     ],
   },
@@ -176,22 +172,22 @@ export const CONDITIONS: Condition[] = [
       'When motivation, clarity, and momentum disappear — ketamine therapy can help break the loop and rediscover your direction.',
     hero: {
       eyebrow: 'Ketcare for getting unstuck',
-      headline: 'When you\'ve hit a wall. <em>Find the door.</em>',
+      headline: "When you've hit a wall. <em>Find the door.</em>",
       subhead:
-        'Stuck isn\'t a failure of effort — it\'s often a sign your brain has settled into a pattern that no longer serves you. Ketamine therapy helps loosen those patterns and creates room for movement.',
+        "Stuck isn't a failure of effort — it's often a sign your brain has settled into a pattern that no longer serves you. Ketamine therapy helps loosen those patterns and creates room for movement.",
     },
     sections: [
       {
-        heading: 'How ketamine helps when you\'re stuck',
-        body: 'TODO: replace with real copy. Ketamine\'s effect on neuroplasticity is most pronounced when you\'re open to change — making it well-suited for the "I know what I want, I just can\'t move" experience.',
+        heading: "How ketamine helps when you're stuck",
+        body: "Ketamine's effect on neuroplasticity is most pronounced when you're open to change — making it especially well-suited for the 'I know what I want, I just can't move' experience. The medicine creates the opening; the work is in stepping through it.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Sessions paired with integration work that turns insight into momentum.',
+        body: "Sessions paired with integration work that turns insight into momentum. We focus the protocol on the specific pattern keeping you stuck — relational, professional, creative, or the quieter kind that doesn't have a name.",
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults navigating major transitions, creative blocks, or that persistent sense of running in place.',
+        body: "Adults navigating major transitions, creative blocks, or that persistent sense of running in place despite doing all the right things. Our intake confirms whether ketamine is the right next step or whether something else fits better first.",
       },
     ],
   },
@@ -205,20 +201,20 @@ export const CONDITIONS: Condition[] = [
       eyebrow: 'Ketcare for grief',
       headline: 'Not to forget. <em>To move with the loss.</em>',
       subhead:
-        'Grief that lasts isn\'t broken — it\'s love with nowhere to go. Ketamine therapy can help integrate the loss without erasing it, in a setting that holds space for what\'s real.',
+        "Grief that lasts isn't broken — it's love with nowhere to go. Ketamine therapy can help integrate the loss without erasing it, in a setting that holds space for what's real.",
     },
     sections: [
       {
         heading: 'How ketamine helps with grief',
-        body: 'TODO: replace with real copy. For complicated grief, ketamine can help process the emotional weight that has become physically and cognitively stuck.',
+        body: "For complicated grief — grief that has fused with depression, dissociation, or the kind of stuckness that won't move — ketamine can help process the emotional weight that has become physically and cognitively stuck. It doesn't shorten grief. It makes room for it.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Trauma-informed clinicians, slower pacing when needed, integration that honors what you\'ve lost.',
+        body: "Trauma-informed clinicians, slower pacing when needed, integration that honors what you've lost rather than rushing past it. The goal isn't to move on. It's to find a way to move with.",
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults navigating complicated grief, anniversary loss, or grief that has settled into depression or anxiety.',
+        body: "Adults navigating complicated grief, anniversary loss, traumatic loss, or grief that has settled into something that traditional bereavement support hasn't been able to shift.",
       },
     ],
   },
@@ -227,7 +223,7 @@ export const CONDITIONS: Condition[] = [
     name: 'Habit Change',
     title: 'Ketamine Therapy for Habit Change | Ketcare',
     description:
-      'Patterns you\'ve outgrown but can\'t shake — ketamine therapy creates the neurological window that makes lasting change possible.',
+      "Patterns you've outgrown but can't shake — ketamine therapy creates the neurological window that makes lasting change possible.",
     hero: {
       eyebrow: 'Ketcare for habit change',
       headline: 'When willpower runs out. <em>Change the wiring.</em>',
@@ -237,15 +233,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with habit change',
-        body: 'TODO: replace with real copy. Ketamine\'s neuroplastic window pairs with behavioral change in ways that traditional approaches alone can\'t match.',
+        body: "Ketamine's neuroplastic window pairs with behavioral change in ways that traditional approaches alone can't match. Without integration, it's a temporary opening; with it, it's a real shift in how the pattern fires.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Sessions plus integration coaching focused on the specific habits you want to change.',
+        body: "Protocol designed around the specific habit you're changing, with integration coaching focused on the moments of choice. Your clinician adjusts the cadence based on how the change is taking hold.",
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults working on substance use, repetitive emotional patterns, or behavioral loops that haven\'t responded to standard approaches.',
+        body: "Adults working on substance use, repetitive emotional patterns, or behavioral loops that haven't responded to standard approaches. Our intake screens for what's appropriate — for certain substance dependencies, additional medical support is needed and we'll guide you to it.",
       },
     ],
   },
@@ -264,15 +260,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with relationships',
-        body: 'TODO: replace with real copy. By easing reactivity and increasing emotional regulation, ketamine therapy creates room for the kind of presence relationships actually need.',
+        body: "Ketamine's effect on emotional reactivity and self-perception creates room for the kind of presence relationships actually need — less defended, more available, more honest. The work is in carrying that into real interactions.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Sessions plus integration around the specific relational patterns you want to change.',
+        body: "Sessions plus integration around the specific relational patterns you want to change — attachment, conflict, intimacy, or the quieter dynamics that keep replaying. Your clinician helps you connect what surfaces in session to what's happening in your actual relationships.",
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults working through chronic relationship friction, attachment patterns, or the emotional aftermath of disconnection.',
+        body: 'Adults working through chronic relationship friction, attachment patterns, or the emotional aftermath of disconnection. Couples can each pursue treatment individually if both want this kind of work.',
       },
     ],
   },
@@ -281,25 +277,25 @@ export const CONDITIONS: Condition[] = [
     name: 'Resilience',
     title: 'Ketamine Therapy for Resilience | Ketcare',
     description:
-      'Resilience isn\'t toughness. It\'s capacity. Ketamine therapy helps build the nervous-system capacity that real resilience requires.',
+      "Resilience isn't toughness. It's capacity. Ketamine therapy helps build the nervous-system capacity that real resilience requires.",
     hero: {
       eyebrow: 'Ketcare for resilience',
       headline: 'Not toughness. <em>Capacity.</em>',
       subhead:
-        'Real resilience isn\'t about pushing through. It\'s about expanding the bandwidth of what your nervous system can hold. Ketamine therapy helps build that capacity from the ground up.',
+        "Real resilience isn't about pushing through. It's about expanding the bandwidth of what your nervous system can hold. Ketamine therapy helps build that capacity from the ground up.",
     },
     sections: [
       {
         heading: 'How ketamine helps with resilience',
-        body: 'TODO: replace with real copy. Ketamine\'s effect on stress response and neuroplasticity supports the kind of adaptive capacity that makes resilience real, not performed.',
+        body: "Ketamine's effect on stress response and neuroplasticity supports the kind of adaptive capacity that makes resilience real, not performed. Not armor against stress — more bandwidth to meet it.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Sessions paired with integration work focused on the specific demands of your life.',
+        body: 'Sessions paired with integration work focused on the specific demands of your life. Your clinician helps you turn the neurological window into actual capacity — not just a good month, but a more durable baseline.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. High-performers, caregivers, and anyone navigating prolonged stress who needs more than a coping strategy.',
+        body: 'High-performers, caregivers, parents, anyone navigating prolonged stress who needs more than another coping strategy. The protocol is designed for sustained change, not crisis intervention.',
       },
     ],
   },
@@ -318,15 +314,15 @@ export const CONDITIONS: Condition[] = [
     sections: [
       {
         heading: 'How ketamine helps with self-love',
-        body: 'TODO: replace with real copy. Ketamine therapy helps decouple identity from self-criticism, creating room for the kind of inner relationship that supports lasting change.',
+        body: "The inner critic isn't an enemy you can argue with. It's a pattern that's been running for so long it feels like truth. Ketamine therapy can interrupt that running, which is the first step in actually changing it. The second step is what you do with the opening.",
       },
       {
         heading: 'What treatment looks like at Ketcare',
-        body: 'TODO: replace with real copy. Sessions plus integration focused specifically on inner-critic patterns and self-compassion practice.',
+        body: 'Sessions plus integration focused specifically on inner-critic patterns and self-compassion practice — not affirmations, but real shifts in how you relate to yourself when things get hard.',
       },
       {
         heading: 'Who this is for',
-        body: 'TODO: replace with real copy. Adults dealing with chronic self-criticism, perfectionism, or the inner voice that makes everything else harder.',
+        body: "Adults dealing with chronic self-criticism, perfectionism, or the inner voice that makes everything else harder. The work isn't fast. It's worth doing.",
       },
     ],
   },
@@ -335,29 +331,29 @@ export const CONDITIONS: Condition[] = [
     name: 'Ketcare 101',
     title: 'Ketcare 101: How Our Treatment Works | Ketcare',
     description:
-      'Everything you need to know about Ketcare\'s at-home ketamine therapy — from intake to treatment to integration.',
+      "Everything you need to know about Ketcare's at-home ketamine therapy — from intake to treatment to integration.",
     hero: {
       eyebrow: 'Ketcare 101',
       headline: 'Everything you need to know. <em>In one place.</em>',
       subhead:
-        'How our protocol works, what to expect, and why we built it this way. The complete walkthrough of Ketcare\'s at-home ketamine therapy.',
+        "How our protocol works, what to expect, and why we built it this way. The complete walkthrough of Ketcare's at-home ketamine therapy.",
     },
     sections: [
       {
         heading: 'The intake',
-        body: 'TODO: replace with real copy. A clinical conversation to confirm fit, review your history, and design a protocol that matches your goals.',
+        body: "A clinical conversation to confirm fit, review your history, and design a protocol that matches your goals. We turn people away when ketamine isn't the right next step — being honest about that is part of how we deliver outcomes our patients trust. The intake takes about an hour.",
       },
       {
         heading: 'The sessions',
-        body: 'TODO: replace with real copy. Structured at-home sessions with clinician availability throughout. Calm environment, clear protocol, no surprises.',
+        body: "Structured at-home sessions in a calm environment you control, with a licensed clinician available throughout. The setting matters — research is clear that the environment around the medicine shapes the outcome. We've designed everything to support that.",
       },
       {
         heading: 'The integration',
-        body: 'TODO: replace with real copy. The work between sessions — turning insight into change. This is where Ketcare\'s approach differs most from less-supported alternatives.',
+        body: "The work between sessions. This is where Ketcare's approach differs most from less-supported alternatives. Insight that surfaces during treatment doesn't automatically become change — integration is what turns one into the other, and we don't leave it to chance.",
       },
       {
         heading: 'Who Ketcare is for',
-        body: 'TODO: replace with real copy. Adults seeking a structured, supervised, evidence-backed path to mental wellness. Not for everyone — that\'s why we start with a clinical intake.',
+        body: "Adults seeking a structured, supervised, evidence-backed path to mental wellness. Not for everyone — that's why we start with a clinical intake. If we're not the right fit, we'll tell you, and often point you to something that is.",
       },
     ],
   },
