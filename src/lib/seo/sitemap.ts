@@ -1,4 +1,5 @@
 import { SITE_URL } from '@/lib/utils';
+import { CONDITIONS } from '@/lib/conditions';
 
 export type SitemapImage = {
   url: string;
@@ -86,6 +87,18 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
 
   return [
     { url: `${SITE_URL}/`, lastmod: today, changefreq: 'weekly', priority: 1.0 },
+    {
+      url: `${SITE_URL}/why-ketcare/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.9,
+    },
+    ...CONDITIONS.map<SitemapEntry>((c) => ({
+      url: `${SITE_URL}/why-ketcare/${c.slug}/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.8,
+    })),
     // More entries get added here as we build pages.
   ];
 }
