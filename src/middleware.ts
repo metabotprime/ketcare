@@ -3,51 +3,32 @@ import type { NextRequest } from 'next/server';
 
 /**
  * Block parasitic SEO scrapers and basic web-vuln scanners at the edge.
- * Returns 403 before the request hits any rendering — saves CPU and prevents
- * data scraping for competitive intelligence tools we get nothing from.
  *
- * AI search bots (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) are
- * NOT blocked here — those are explicitly allowed via robots.txt because we
- * want to be cited in AI-generated answers.
+ * AI search bots (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.)
+ * are NOT blocked here — those are explicitly allowed via robots.txt because
+ * we want to be cited in AI-generated answers.
+ *
+ * Defensive try/catch ensures any future error here doesn't take down the
+ * whole site with a 500 MIDDLEWARE_INVOCATION_FAILED.
  */
-const BLOCKED_USER_AGENTS = [
-  // Parasitic SEO scrapers
-  'AhrefsBot',
-  'SemrushBot',
-  'MJ12bot',
-  'DotBot',
-  'DataForSeoBot',
-  'BLEXBot',
-  'MegaIndex',
-  'Mauibot',
-  'PetalBot',
-  // Vuln scanners / hostile probes
-  'ZmEu',
-  'masscan',
-  'nmap',
-  'sqlmap',
-  'nikto',
-];
-
-const blockedRegex = new RegExp(
-  BLOCKED_USER_AGENTS.map((bot) => bot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'),
-  'i'
-);
+const BLOCKED_PATTERN =
+  /AhrefsBot|SemrushBot|MJ12bot|DotBot|DataForSeoBot|BLEXBot|MegaIndex|Mauibot|PetalBot|ZmEu|masscan|nmap|sqlmap|nikto/i;
 
 export function middleware(request: NextRequest) {
-  const userAgent = request.headers.get('user-agent') || '';
-
-  if (blockedRegex.test(userAgent)) {
-    return new NextResponse('Forbidden', { status: 403 });
+  try {
+    const ua = request.headers.get('user-agent');
+    if (ua && BLOCKED_PATTERN.test(ua)) {
+      return new NextResponse('Forbidden', { status: 403 });
+    }
+  } catch {
+    // Never let an unexpected error in middleware crash the request.
   }
-
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    // Run on all paths EXCEPT internal Next assets and the API.
-    // Don't waste CPU running middleware on static chunks.
-    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|image-sitemap.xml|llms.txt|llms-full.txt).*)',
+    // Match everything except Next internals, the API, and a few static files.
+    '/((?!_next|api|favicon\\.ico|robots\\.txt|sitemap\\.xml|image-sitemap\\.xml|llms\\.txt|llms-full\\.txt).*)',
   ],
 };
