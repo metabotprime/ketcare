@@ -12,36 +12,38 @@
        Shifting the hue numbers below shifts the whole site. */
 
     --background: 0 0% 100%;
-    --foreground: 215 25% 15%;
+    --foreground: 280 18% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 280 18% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 280 18% 14%;
 
-    /* Primary: deep, calming teal-blue (mental wellness vibe) */
-    --primary: 195 55% 32%;
+    /* Primary: deep brand purple — pulled from ketcare.com logo (#5A2785),
+       saturated slightly for vibrancy. Full hue palette swivels around this. */
+    --primary: 285 70% 36%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: warm cream for soft section backgrounds */
-    --secondary: 30 30% 96%;
-    --secondary-foreground: 215 25% 15%;
+    /* Secondary: very soft purple-tinted neutral for section backgrounds */
+    --secondary: 285 25% 96%;
+    --secondary-foreground: 280 18% 14%;
 
     /* Muted: subtle neutrals for borders, dividers, soft text */
-    --muted: 30 18% 96%;
-    --muted-foreground: 215 12% 42%;
+    --muted: 280 12% 96%;
+    --muted-foreground: 280 8% 42%;
 
-    /* Accent: warm coral for CTAs and highlights — contrasts the teal */
-    --accent: 22 75% 58%;
+    /* Accent: warm gold for CTAs — complementary to purple, keeps energy
+       without competing with primary. */
+    --accent: 38 78% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 15% 88%;
-    --input: 215 15% 88%;
-    --ring: 195 55% 32%;
+    --border: 280 12% 88%;
+    --input: 280 12% 88%;
+    --ring: 285 70% 36%;
 
     --radius: 0.625rem;
   }
