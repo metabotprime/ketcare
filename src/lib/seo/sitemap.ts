@@ -105,6 +105,48 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       changefreq: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/blog/`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/contact/`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/pricing/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/privacy-policy/`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${SITE_URL}/terms-of-use/`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${SITE_URL}/informed-consent/`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${SITE_URL}/consumer-health-data-privacy-policy/`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: 0.4,
+    },
     // More entries get added here as we build pages.
   ];
 }
