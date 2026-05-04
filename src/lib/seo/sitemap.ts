@@ -88,6 +88,24 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
   return [
     { url: `${SITE_URL}/`, lastmod: today, changefreq: 'weekly', priority: 1.0 },
     {
+      url: `${SITE_URL}/our-story/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/why-ketamine/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/research/`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/why-ketcare/`,
       lastmod: today,
       changefreq: 'monthly',
