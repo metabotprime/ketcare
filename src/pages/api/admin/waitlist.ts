@@ -64,14 +64,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .status(503)
       .json({
         error:
-          'Storage not configured. Connect Upstash Redis from Vercel dashboard → Storage.',
+          'Storage not configured. Connect Redis from Vercel dashboard → Storage.',
       });
   }
 
   let rows: Submission[] = [];
   try {
-    const raw = (await redis.lrange(WAITLIST_KEY, 0, -1)) as (string | Submission)[];
-    rows = raw.map((entry) => (typeof entry === 'string' ? JSON.parse(entry) : entry));
+    const raw = await redis.lrange(WAITLIST_KEY, 0, -1);
+    rows = raw.map((entry) => JSON.parse(entry) as Submission);
   } catch (err) {
     return res
       .status(500)

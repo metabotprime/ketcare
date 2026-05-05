@@ -1,29 +1,42 @@
-import { Redis } from '@upstash/redis';
+import Redis from 'ioredis';
 
 /**
- * Upstash Redis client (lazy singleton).
+ * Redis client (lazy singleton) for Vercel's Redis marketplace integration.
  *
- * Returns null if the env vars haven't been wired yet — callers should
- * handle the null case so the site doesn't break before storage is
- * connected.
+ * Connects via REDIS_URL (TCP). Returns null if env var isn't set so callers
+ * can handle the unconfigured case gracefully.
  *
- * Env vars (auto-injected when you connect Upstash from Vercel Marketplace):
- *   UPSTASH_REDIS_REST_URL
- *   UPSTASH_REDIS_REST_TOKEN
+ * Env var (auto-injected when you connect Redis from Vercel Marketplace):
+ *   REDIS_URL  e.g. rediss://default:<password>@<host>:<port>
+ *
+ * Note: in Vercel serverless, connections persist across warm invocations.
+ * On a cold start a new connection is created. We use lazyConnect so the
+ * import is cheap and connection only happens on first command.
  */
+
 let _client: Redis | null | undefined;
 
 export function getRedis(): Redis | null {
   if (_client !== undefined) return _client;
 
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-
-  if (!url || !token) {
+  const url = process.env.REDIS_URL;
+  if (!url) {
     _client = null;
     return null;
   }
 
-  _client = new Redis({ url, token });
+  _client = new Redis(url, {
+    lazyConnect: true,
+    // For serverless: cap retries so a flaky connection doesn't pile up.
+    maxRetriesPerRequest: 2,
+    // Don't crash the process on connection error — log and let caller decide.
+    enableReadyCheck: false,
+  });
+
+  _client.on('error', (err) => {
+    // eslint-disable-next-line no-console
+    console.error('[redis] connection error', err.message);
+  });
+
   return _client;
 }

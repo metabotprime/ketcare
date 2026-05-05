@@ -87,8 +87,9 @@ export default async function handler(
   const redis = getRedis();
   if (redis) {
     try {
-      await redis.lpush(WAITLIST_KEY, JSON.stringify(submission));
-      await redis.set(`${EMAIL_KEY_PREFIX}${submission.email}`, submission);
+      const payload = JSON.stringify(submission);
+      await redis.lpush(WAITLIST_KEY, payload);
+      await redis.set(`${EMAIL_KEY_PREFIX}${submission.email}`, payload);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('[waitlist] redis write failed', err);
@@ -96,8 +97,8 @@ export default async function handler(
   } else {
     // eslint-disable-next-line no-console
     console.warn(
-      '[waitlist] Upstash Redis env vars not set — submission logged only. ' +
-        'Connect Upstash from Vercel dashboard → Storage → Upstash.'
+      '[waitlist] REDIS_URL not set — submission logged only. ' +
+        'Connect Redis from Vercel dashboard → Storage.'
     );
   }
 
