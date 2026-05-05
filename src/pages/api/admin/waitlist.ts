@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { kv } from '@vercel/kv';
+import { getRedis } from '@/lib/redis';
 
 /**
  * GET /api/admin/waitlist/?token=<ADMIN_TOKEN>&format=json|csv
@@ -58,14 +58,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ error: 'Unauthorized.' });
   }
 
+  const redis = getRedis();
+  if (!redis) {
+    return res
+      .status(503)
+      .json({
+        error:
+          'Storage not configured. Connect Upstash Redis from Vercel dashboard → Storage.',
+      });
+  }
+
   let rows: Submission[] = [];
   try {
-    const raw = (await kv.lrange(WAITLIST_KEY, 0, -1)) as (string | Submission)[];
+    const raw = (await redis.lrange(WAITLIST_KEY, 0, -1)) as (string | Submission)[];
     rows = raw.map((entry) => (typeof entry === 'string' ? JSON.parse(entry) : entry));
   } catch (err) {
     return res
       .status(500)
-      .json({ error: 'Could not read from KV. Is the database connected?', detail: String(err) });
+      .json({ error: 'Could not read from Redis.', detail: String(err) });
   }
 
   const format = (req.query.format as string) || 'json';
