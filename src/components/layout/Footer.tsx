@@ -232,10 +232,10 @@ export function Footer() {
               </p>
               <p>
                 <a
-                  href="mailto:info@ketcare.com"
+                  href="mailto:care@ketcare.com"
                   className="text-primary hover:underline"
                 >
-                  info@ketcare.com
+                  care@ketcare.com
                 </a>
               </p>
             </div>

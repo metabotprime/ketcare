@@ -106,10 +106,10 @@ export default function ContactPage() {
               </p>
               <p className="mt-4">
                 <a
-                  href="mailto:hello@ketcare.com"
+                  href="mailto:care@ketcare.com"
                   className="font-medium text-primary hover:underline"
                 >
-                  hello@ketcare.com
+                  care@ketcare.com
                 </a>
               </p>
             </article>
