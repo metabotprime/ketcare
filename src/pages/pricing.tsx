@@ -115,8 +115,16 @@ export default function TreatmentsPage() {
       {/* Treatment options — two product cards */}
       <section className="section-padding bg-secondary">
         <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Treatments</p>
-          <h1 className="section-display max-w-4xl">
+          <div className="flex items-center justify-between gap-4">
+            <p className="section-eyebrow">Treatments</p>
+            <Link
+              href="/compare/"
+              className="text-sm font-medium text-primary hover:underline"
+            >
+              Compare Ketcare to other providers →
+            </Link>
+          </div>
+          <h1 className="section-display mt-4 max-w-4xl">
             Choose your <em>treatment.</em>
           </h1>
 

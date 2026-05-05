@@ -80,6 +80,14 @@ const nextConfig = {
 
       // Old contact page slug → new
       { source: '/contact-us', destination: '/contact', permanent: true },
+
+      // Duplicate chronic-pain post collapsed into canonical (trailing slashes
+      // match `trailingSlash: true` so this resolves in a single 308).
+      {
+        source: '/posts/navigating-at-home-ketamine-therapy-for-chronic-pain-relief-2/',
+        destination: '/posts/navigating-at-home-ketamine-therapy-for-chronic-pain-relief/',
+        permanent: true,
+      },
     ];
   },
 };

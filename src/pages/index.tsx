@@ -7,6 +7,7 @@ import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
 import { FAQSchema } from '@/components/schema/FAQSchema';
 import { Button } from '@/components/ui/Button';
 import { WaitlistForm } from '@/components/waitlist/WaitlistForm';
+import { getAllPosts, formatPostDate, type PostMeta } from '@/lib/posts';
 
 const FEATURES = [
   {
@@ -124,58 +125,12 @@ const FAQS = [
   },
 ];
 
-const ARTICLES = [
-  {
-    title: 'Navigating Ketamine Nasal Spray for Home Use: A Comprehensive Guide',
-    href: '/navigating-ketamine-nasal-spray-for-home-use-a-comprehensive-guide/',
-    category: 'Wellbeing',
-    image: '/wp-content/uploads/2025/09/featured-image-1761232426325.png',
-    excerpt: 'Navigate ketamine nasal spray home use for severe depression or anxiety.',
-    date: 'November 1, 2025',
-  },
-  {
-    title: 'Navigating At-Home Ketamine Nasal Spray for Depression Treatment',
-    href: '/navigating-at-home-ketamine-nasal-spray-for-depression-treatment/',
-    category: 'Depression',
-    image: '/wp-content/uploads/2025/09/featured-image-1761236702586.png',
-    excerpt: 'Explore ketamine nasal spray for home depression treatment. Understand safety,',
-    date: 'October 24, 2025',
-  },
-  {
-    title: 'Navigating At-Home Ketamine Therapy: Safety & Best Practices',
-    href: '/navigating-at-home-ketamine-therapy-safety-best-practices/',
-    category: 'Wellbeing',
-    image: '/wp-content/uploads/2025/09/featured-image-1761237162391.png',
-    excerpt: 'Explore at-home ketamine safety. Learn expert guidelines, protocols, and how',
-    date: 'October 23, 2025',
-  },
-  {
-    title: 'Navigating Telemedicine Ketamine: A Comprehensive Guide to Remote Treatment',
-    href: '/navigating-telemedicine-ketamine-a-comprehensive-guide-to-remote-treatment/',
-    category: 'Wellbeing',
-    image: '/wp-content/uploads/2025/09/featured-image-1761239402901.png',
-    excerpt: 'Explore telemedicine ketamine sessions for mental health. Learn about benefits,',
-    date: 'October 23, 2025',
-  },
-  {
-    title: 'Navigating At-Home Ketamine Therapy for Chronic Pain Relief',
-    href: '/navigating-at-home-ketamine-therapy-for-chronic-pain-relief/',
-    category: 'Wellbeing',
-    image: '/wp-content/uploads/2025/09/featured-image-1761239987854.png',
-    excerpt: 'Explore at-home ketamine for chronic pain relief. Learn about benefits,',
-    date: 'October 23, 2025',
-  },
-  {
-    title: 'Navigating At-Home Ketamine Therapy for Chronic Pain Relief',
-    href: '/navigating-at-home-ketamine-therapy-for-chronic-pain-relief-2/',
-    category: 'Wellbeing',
-    image: '/wp-content/uploads/2025/09/featured-image-1761276189374.png',
-    excerpt: 'Explore at-home ketamine for chronic pain relief. Learn about benefits,',
-    date: 'October 23, 2025',
-  },
-];
 
-export default function Home() {
+type HomeProps = {
+  recentPosts: PostMeta[];
+};
+
+export default function Home({ recentPosts }: HomeProps) {
   return (
     <>
       <SEOHead
@@ -626,55 +581,51 @@ export default function Home() {
 
       {/* ARTICLES */}
       <section className="section-padding">
-        <div className="container">
-          <div className="mb-10 flex items-end justify-between">
-            <h2 className="max-w-xl text-3xl font-medium tracking-tight md:text-4xl">
-              Discover more about Ketcare and the psychedelic field
-            </h2>
+        <div className="container max-w-4xl">
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <div>
+              <p className="section-eyebrow mb-3">From the blog</p>
+              <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+                Evidence-grounded reading on at-home ketamine therapy.
+              </h2>
+            </div>
             <Button variant="default" asChild>
               <Link href="/blog/" className="rounded-full px-6">
                 All articles
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {ARTICLES.map((a) => (
-              <Link
-                key={a.title + a.date}
-                href={a.href}
-                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:shadow-md"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                  <Image
-                    src={a.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
-                    {a.category}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-base font-semibold leading-snug tracking-tight">
-                    {a.title}
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                    {a.excerpt}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
-                    <span className="text-sm font-medium text-primary">
-                      Read More »
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {a.date}
-                    </span>
+          <ul className="divide-y divide-border border-y border-border">
+            {recentPosts.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/posts/${p.slug}/`}
+                  className="group flex flex-col gap-3 py-6 transition-colors hover:bg-secondary/50 md:flex-row md:items-baseline md:justify-between md:gap-8 md:py-8"
+                >
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                      <span className="font-semibold uppercase tracking-[0.18em] text-primary">
+                        {p.category}
+                      </span>
+                      <span className="text-muted-foreground" aria-hidden="true">·</span>
+                      <time className="text-muted-foreground" dateTime={p.date}>
+                        {formatPostDate(p.date)}
+                      </time>
+                    </div>
+                    <h3 className="mt-3 text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-primary md:text-xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-2 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                      {p.excerpt}
+                    </p>
                   </div>
-                </div>
-              </Link>
+                  <p className="flex-shrink-0 text-xs uppercase tracking-wider text-muted-foreground md:text-sm">
+                    {p.readingTime}
+                  </p>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -707,9 +658,10 @@ export default function Home() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const recentPosts = getAllPosts().slice(0, 6);
   return {
-    props: {},
+    props: { recentPosts },
     revalidate: 3600,
   };
 };
