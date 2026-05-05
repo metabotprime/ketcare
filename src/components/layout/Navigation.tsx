@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logo } from '@/components/brand/LogoOptions';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
@@ -10,7 +10,7 @@ const NAV_LINKS = [
 ];
 
 type NavigationProps = {
-  /** When true, renders transparent over a hero (white text). Default: solid sticky bar. */
+  /** When true, renders transparent over a hero. Default: solid sticky bar. */
   overlay?: boolean;
 };
 
@@ -30,20 +30,10 @@ export function Navigation({ overlay = false }: NavigationProps) {
           aria-label="Ketcare home"
           className="flex shrink-0 items-center"
         >
-          <Image
-            src="/logo-wordmark.png"
-            alt="Ketcare"
-            width={1200}
-            height={270}
-            priority
-            className="h-9 w-auto md:h-10"
-          />
+          <Logo height={40} />
         </Link>
 
-        <nav
-          className="hidden items-center gap-8 md:flex"
-          aria-label="Primary"
-        >
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

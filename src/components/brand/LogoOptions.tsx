@@ -1,6 +1,8 @@
 /**
  * Three logo direction options. Each is fully self-contained SVG/CSS
  * (no PNG), so it's crisp at any size and recolorable via theme tokens.
+ *
+ * USER PICKED OPTION B — exported as the canonical Logo + LogoMark.
  */
 
 import { cn } from '@/lib/utils';
@@ -12,9 +14,67 @@ type LogoProps = {
 };
 
 /**
+ * MARK — single-ring circle with a clean EKG pulse path. Used standalone
+ * (footer, social avatars) or inside the wordmark logo.
+ *
+ * Circle stroke uses currentColor so it can be inverted on dark backgrounds
+ * by setting text-color on the parent. EKG line is hard-coded to primary.
+ */
+export function LogoMark({ size = 40, className }: { size?: number; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 40 40"
+      width={size}
+      height={size}
+      aria-label="Ketcare"
+      className={cn('inline-block flex-shrink-0', className)}
+    >
+      <circle
+        cx="20"
+        cy="20"
+        r="18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="M5 20 L13 20 L16 12 L20 28 L24 14 L27 20 L35 20"
+        fill="none"
+        stroke="hsl(var(--primary))"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/**
+ * LOGO — mark + wordmark together. Chosen direction (Option B).
+ * - Mark: single-ring circle + clean EKG pulse path
+ * - Wordmark: bold sans, "Ket" foreground + "care" primary
+ */
+export function Logo({ className, height = 40 }: LogoProps) {
+  return (
+    <span
+      className={cn('inline-flex items-center gap-2 font-sans font-bold leading-none tracking-tight', className)}
+      style={{ fontSize: height * 0.6 }}
+      aria-label="Ketcare"
+    >
+      <LogoMark size={height} />
+      <span>
+        <span className="text-foreground">Ket</span>
+        <span className="text-primary">care</span>
+      </span>
+    </span>
+  );
+}
+
+// ---- Other options retained for the /logo-options/ comparison page ----
+
+/**
  * OPTION A — Refined wordmark, no icon.
- * Clean sans, tight letter-spacing, "Ket" foreground + "care" primary,
- * subtle dot accent at end. Most minimalist; best for app-bar use.
+ * Type-only with subtle purple dot accent. (Not the picked direction.)
  */
 export function LogoOptionA({ className, height = 32 }: LogoProps) {
   return (
@@ -35,55 +95,13 @@ export function LogoOptionA({ className, height = 32 }: LogoProps) {
 }
 
 /**
- * OPTION B — Mark + wordmark, modern.
- * Cleaned-up version of the current EKG icon (single circle, simpler
- * pulse path) sitting next to a strong sans wordmark.
+ * OPTION B — Mark + wordmark. THIS IS THE PICKED DIRECTION.
+ * Alias to Logo so the /logo-options/ page can keep its naming.
  */
-export function LogoOptionB({ className, height = 40 }: LogoProps) {
-  return (
-    <span
-      className={cn('inline-flex items-center gap-2 font-sans font-bold leading-none tracking-tight', className)}
-      style={{ fontSize: height * 0.7 }}
-      aria-label="Ketcare"
-    >
-      <svg
-        viewBox="0 0 40 40"
-        width={height}
-        height={height}
-        aria-hidden="true"
-        className="flex-shrink-0"
-      >
-        <circle
-          cx="20"
-          cy="20"
-          r="18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-foreground"
-        />
-        <path
-          d="M5 20 L13 20 L16 12 L20 28 L24 14 L27 20 L35 20"
-          fill="none"
-          stroke="hsl(var(--primary))"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span>
-        <span className="text-foreground">Ket</span>
-        <span className="text-primary">care</span>
-      </span>
-    </span>
-  );
-}
+export const LogoOptionB = Logo;
 
 /**
- * OPTION C — Editorial serif accent.
- * "Ket" in confident sans, "care" in DM Serif Display italic. Premium /
- * wellness feel. Pairs naturally with the section-display pattern used
- * elsewhere on the site.
+ * OPTION C — Editorial serif accent. (Not the picked direction.)
  */
 export function LogoOptionC({ className, height = 36 }: LogoProps) {
   return (

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { LogoMark } from '@/components/brand/LogoOptions';
 
 const TREATMENT_LINKS = [
   { href: '/why-ketcare/', label: 'How it Works' },
@@ -50,14 +50,12 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Logo */}
           <div className="lg:col-span-2">
-            <Link href="/" aria-label="Ketcare home" className="inline-block">
-              <Image
-                src="/logo.png"
-                alt="Ketcare"
-                width={64}
-                height={64}
-                className="h-12 w-12"
-              />
+            <Link
+              href="/"
+              aria-label="Ketcare home"
+              className="inline-block text-foreground"
+            >
+              <LogoMark size={48} />
             </Link>
           </div>
 
