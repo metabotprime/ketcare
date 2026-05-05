@@ -5,12 +5,17 @@ import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema';
 import { Button } from '@/components/ui/Button';
 
+/**
+ * Replicates live ketcare.com/blog/ — which is a near-empty index page
+ * (just an H1 "Blog"). We add a brief intro and waitlist CTA.
+ */
+
 export default function BlogIndex() {
   return (
     <>
       <SEOHead
-        title="Blog | Ketcare"
-        description="Evidence-grounded writing on at-home ketamine therapy, mental wellness, and what real change actually requires."
+        title="Ketcare Blog | Explore Articles on Ketamine Therapy"
+        description="Visit the Ketcare blog to explore expert articles on ketamine therapy, mental health, and wellness. Learn about at-home treatments and integration."
         path="/blog/"
       />
       <OrganizationSchema />
@@ -25,7 +30,7 @@ export default function BlogIndex() {
         <div className="container max-w-5xl">
           <p className="section-eyebrow mb-4">Blog</p>
           <h1 className="section-display max-w-4xl">
-            Articles. <em>Research. Practice.</em>
+            Blog.
           </h1>
           <p className="section-subhead mt-6 max-w-2xl">
             Evidence-grounded writing on at-home ketamine therapy, mental
@@ -37,7 +42,7 @@ export default function BlogIndex() {
       <section className="section-padding">
         <div className="container max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Articles publish at launch.
+            Articles publishing soon.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             We&apos;re writing carefully. The first batch covers protocol

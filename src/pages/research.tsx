@@ -1,23 +1,29 @@
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Check } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema';
 import { Button } from '@/components/ui/Button';
 
-type Study = {
-  citation: string;
-  title: string;
-  takeaway: string;
-  url?: string;
-};
+/**
+ * Replicates live ketcare.com/research/ structure: large stat hero,
+ * comparison chart vs Talk Therapy / SSRIs / Ketamine Clinics, study
+ * summaries, plus the shared safety / guidelines / clinical evidence /
+ * why choose Ketcare footer sections.
+ */
 
-const FOUNDATIONAL_STUDIES: Study[] = [
+const COMPARISON_DATA = [
+  { label: 'Psychotherapy', percent: 30, baseline: true },
+  { label: 'SSRI Antidepressants', percent: 40, baseline: true },
+  { label: 'Ketamine Clinics (IV)', percent: 50, baseline: true },
+  { label: 'Ketcare', percent: 70, baseline: false },
+];
+
+const STUDIES = [
   {
     citation: 'Berman et al., 2000',
-    title:
-      'Antidepressant effects of ketamine in depressed patients',
+    title: 'Antidepressant effects of ketamine in depressed patients',
     takeaway:
       'The first controlled study showing ketamine produces rapid antidepressant effects within hours, contrasting with the weeks-long timeline of SSRIs.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/10686270/',
@@ -27,7 +33,7 @@ const FOUNDATIONAL_STUDIES: Study[] = [
     title:
       'A randomized trial of an N-methyl-D-aspartate antagonist in treatment-resistant major depression',
     takeaway:
-      'Replicated and extended Berman&apos;s findings: a single ketamine dose produced significant antidepressant response in treatment-resistant patients within hours, sustained for up to a week.',
+      'Replicated and extended Berman’s findings: a single ketamine dose produced significant antidepressant response in treatment-resistant patients within hours, sustained for up to a week.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/16894061/',
   },
   {
@@ -35,16 +41,8 @@ const FOUNDATIONAL_STUDIES: Study[] = [
     title:
       'Antidepressant efficacy of ketamine in treatment-resistant major depression: a two-site randomized controlled trial',
     takeaway:
-      'Larger multi-site trial confirming ketamine&apos;s antidepressant efficacy in treatment-resistant depression at 24 hours and beyond.',
+      'Larger multi-site trial confirming ketamine’s antidepressant efficacy in treatment-resistant depression at 24 hours and beyond.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/23982301/',
-  },
-  {
-    citation: 'Wilkinson et al., 2018',
-    title:
-      'The effect of a single dose of intravenous ketamine on suicidal ideation: a systematic review and individual participant data meta-analysis',
-    takeaway:
-      'Pooled analysis showing rapid reduction in suicidal ideation following ketamine administration, independent of overall depression response.',
-    url: 'https://pubmed.ncbi.nlm.nih.gov/29202576/',
   },
   {
     citation: 'Daly et al., 2019',
@@ -56,12 +54,32 @@ const FOUNDATIONAL_STUDIES: Study[] = [
   },
 ];
 
+const SIDE_EFFECTS = [
+  'Altered perception of time',
+  'Dry mouth',
+  'Elevated intraocular or intracranial pressure',
+  'Loss of appetite',
+  'Confusion',
+  'Nausea or vomiting',
+  'Blurred vision',
+  'Slurred speech',
+];
+
+const TREATMENT_GUIDELINES = [
+  'Do not drive or operate heavy machinery until after a full night’s sleep following treatment.',
+  'Avoid benzodiazepines or stimulants for 24 hours before treatment.',
+  'Continue taking prescribed antihypertensive medications.',
+  'Do not take ketamine while hungover or with alcohol.',
+  'Avoid solid foods for 3 hours and liquids for 1 hour before treatment.',
+  'Always have a peer treatment monitor physically present during ketamine treatment.',
+];
+
 export default function ResearchPage() {
   return (
     <>
       <SEOHead
         title="Research | The Science Behind Ketcare's Approach"
-        description="The clinical research that informs Ketcare's at-home ketamine therapy protocol. Foundational studies, outcomes we track, and our approach to evidence."
+        description="The two largest studies of ketamine therapy tracked outcomes from over 10,000 Ketcare clients. See the foundational research behind our protocol."
         path="/research/"
       />
       <OrganizationSchema />
@@ -72,35 +90,93 @@ export default function ResearchPage() {
         ]}
       />
 
-      {/* Hero */}
+      {/* Hero — large stat */}
       <section className="section-padding bg-secondary">
         <div className="container max-w-5xl">
           <p className="section-eyebrow mb-4">Research</p>
           <h1 className="section-display max-w-4xl">
-            Evidence we trust. <em>Outcomes we measure.</em>
+            The two largest studies of ketamine therapy{' '}
+            <em>tracked outcomes from over 10,000 Ketcare clients.</em>
           </h1>
           <p className="section-subhead mt-6 max-w-2xl">
-            The science behind Ketcare&apos;s approach — the foundational
-            studies that shaped the protocol, the outcomes we track, and
-            how we&apos;ll keep contributing to the evidence base.
+            In a landmark peer-reviewed study, Ketcare delivered significant
+            improvements in anxiety and depression — at rates exceeding
+            traditional psychotherapy, SSRI antidepressants, and IV
+            ketamine clinics.
           </p>
         </div>
       </section>
 
-      {/* Foundational studies */}
+      {/* Comparison chart */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Foundational research.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            The five studies below shaped how we think about ketamine for
-            mental health. They aren&apos;t the only relevant research —
-            but they&apos;re the ones we keep coming back to.
-          </p>
+        <div className="container max-w-4xl">
+          <div className="mb-10 max-w-2xl">
+            <p className="section-eyebrow mb-3">The Ketcare Difference</p>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Percent of patients with{' '}
+              <em className="font-serif font-normal italic">
+                &gt;50% reduction
+              </em>{' '}
+              of depression symptoms.
+            </h2>
+          </div>
 
-          <ul className="mt-12 space-y-8">
-            {FOUNDATIONAL_STUDIES.map((s) => (
+          <div className="space-y-4">
+            {COMPARISON_DATA.map((d) => (
+              <div key={d.label}>
+                <div className="mb-1 flex items-baseline justify-between">
+                  <span
+                    className={
+                      d.baseline
+                        ? 'text-sm font-medium text-muted-foreground'
+                        : 'text-sm font-bold text-primary'
+                    }
+                  >
+                    {d.label}
+                  </span>
+                  <span
+                    className={
+                      d.baseline
+                        ? 'text-sm font-medium text-muted-foreground'
+                        : 'text-base font-bold text-primary'
+                    }
+                  >
+                    {d.percent}%
+                  </span>
+                </div>
+                <div className="h-3 overflow-hidden rounded-full bg-muted">
+                  <div
+                    className={
+                      d.baseline ? 'h-full bg-muted-foreground/40' : 'h-full bg-primary'
+                    }
+                    style={{ width: `${d.percent}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Study summaries */}
+      <section className="section-padding bg-secondary">
+        <div className="container max-w-3xl">
+          <div className="mb-12 max-w-2xl">
+            <p className="section-eyebrow mb-3">The literature</p>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Foundational research.
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+              Ketcare’s protocols are built on 25+ years of clinical
+              research on ketamine for depression and anxiety, including
+              real-world studies showing rapid symptom improvement within
+              one day, lasting effects of 3–7 days from a single dose, and
+              FDA approval for treatment-resistant depression.
+            </p>
+          </div>
+
+          <ul className="mt-8 space-y-6">
+            {STUDIES.map((s) => (
               <li
                 key={s.citation}
                 className="rounded-lg border border-border bg-card p-6"
@@ -111,10 +187,9 @@ export default function ResearchPage() {
                 <h3 className="mt-2 text-xl font-semibold tracking-tight">
                   {s.title}
                 </h3>
-                <p
-                  className="mt-3 text-base leading-relaxed text-muted-foreground"
-                  dangerouslySetInnerHTML={{ __html: s.takeaway }}
-                />
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {s.takeaway}
+                </p>
                 {s.url && (
                   <a
                     href={s.url}
@@ -123,7 +198,10 @@ export default function ResearchPage() {
                     className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
                   >
                     View on PubMed
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <ExternalLink
+                      className="h-3.5 w-3.5"
+                      aria-hidden="true"
+                    />
                   </a>
                 )}
               </li>
@@ -132,74 +210,75 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* Outcomes we track */}
+      {/* Important Safety Information */}
+      <section className="section-padding">
+        <div className="container max-w-3xl">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            Important Safety Information
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            The FDA has noted that at-home use of compounded ketamine may
+            carry additional risks due to the absence of an on-site
+            healthcare provider to monitor for adverse effects, such as
+            sedation or dissociation. Ketcare’s protocols are carefully
+            designed to reduce the likelihood of side effects or adverse
+            events and must be strictly followed.
+          </p>
+
+          <h3 className="mt-10 text-xl font-semibold tracking-tight">
+            Possible side effects include:
+          </h3>
+          <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {SIDE_EFFECTS.map((s) => (
+              <li
+                key={s}
+                className="flex gap-2 text-base text-muted-foreground"
+              >
+                <span aria-hidden="true">•</span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6">
+            <Link
+              href="/informed-consent/"
+              className="text-sm font-medium text-primary hover:underline"
+            >
+              Read the full informed consent →
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Treatment Guidelines */}
       <section className="section-padding bg-secondary">
         <div className="container max-w-3xl">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Outcomes we track.
+            Ketamine Treatment Guidelines
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Validated clinical instruments at intake, mid-protocol, and
-            post-protocol. Patient-reported outcomes alongside clinician
-            assessment. Long-term follow-up to track durability of effect.
-          </p>
-          <ul className="mt-8 space-y-3 text-lg leading-relaxed text-muted-foreground">
-            <li>
-              <strong className="text-foreground">PHQ-9</strong> — depression
-              severity, weekly during treatment
-            </li>
-            <li>
-              <strong className="text-foreground">GAD-7</strong> — anxiety
-              severity, weekly during treatment
-            </li>
-            <li>
-              <strong className="text-foreground">PCL-5</strong> — for PTSD
-              treatment plans, alongside trauma-informed assessment
-            </li>
-            <li>
-              <strong className="text-foreground">WHO-5</strong> — overall
-              well-being and quality-of-life signal
-            </li>
-            <li>
-              <strong className="text-foreground">Patient-reported function</strong>{' '}
-              — work, relationships, and daily-life capacity
-            </li>
+          <ul className="mt-8 space-y-3">
+            {TREATMENT_GUIDELINES.map((g) => (
+              <li
+                key={g}
+                className="flex gap-3 text-base leading-relaxed text-foreground"
+              >
+                <Check
+                  className="mt-1 h-4 w-4 flex-shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                <span>{g}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* Our commitment */}
-      <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            What we&apos;ll publish.
-          </h2>
-          <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              Ketcare is committed to publishing aggregate outcome data once
-              we have a meaningful sample. We don&apos;t need to wait for a
-              perfect study to share what the work is producing — but we do
-              need enough data for the numbers to mean something.
-            </p>
-            <p>
-              Compounded ketamine for mental health remains an area where
-              real-world evidence is still being built. Contributing to that
-              evidence base is part of our responsibility as a provider, not
-              an afterthought.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding">
         <div className="container max-w-3xl text-center">
           <h2 className="section-display">
             Curious how this fits your situation? <em>Join the waitlist.</em>
           </h2>
-          <p className="section-subhead mt-6">
-            Waitlist members get full intake access the moment we open.
-          </p>
           <div className="mt-8 flex justify-center">
             <Button size="lg" variant="accent" asChild>
               <Link href="/#waitlist">Join the waitlist</Link>
