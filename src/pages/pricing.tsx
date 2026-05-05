@@ -20,14 +20,16 @@ const PRODUCTS = [
   {
     name: 'Nasal Spray',
     description: 'Intranasal ketamine therapy',
-    price: 'As low as $595/M',
-    href: '#',
+    price: '$600',
+    priceDetail: 'for the 6-session program',
+    href: '/#waitlist',
   },
   {
     name: 'Lozenges',
     description: 'Sublingual ketamine therapy',
-    price: 'As low as $595/M',
-    href: '#',
+    price: '$600',
+    priceDetail: 'for the 6-session program',
+    href: '/#waitlist',
   },
 ];
 
@@ -72,7 +74,7 @@ const INSURANCE_LOGOS = [
 const FAQS = [
   {
     q: 'Is there a price difference between Nasal and Tablets?',
-    a: 'No. The cost of Ketcare treatment is the same regardless of medication type — whether you receive Ketcare Nasal Spray (intranasal) or Ketcare Lozenges (sublingual).',
+    a: "No. Both Ketcare Nasal Spray (intranasal) and Ketcare Lozenges (sublingual) are $600 for the complete 6-session program — same clinical supervision, same integration support, same price.",
   },
   {
     q: 'Is Ketcare covered by insurance?',
@@ -84,7 +86,7 @@ const FAQS = [
   },
   {
     q: 'How long does it take to see results?',
-    a: 'Ketamine is unique among mental health treatments in that effects can appear within hours and often peak 24 to 48 hours after a session. Many clients notice meaningful improvement within the first few sessions, with sustained progress over the course of a complete program.',
+    a: 'Ketamine is unique among mental health treatments in that effects can appear within hours and often peak 24 to 48 hours after a session. Many clients notice meaningful improvement within the first few sessions of the 6-session program, with sustained progress over the course of a complete program.',
   },
   {
     q: 'Is it required for my sessions to be administered with a peer monitor?',
@@ -125,7 +127,8 @@ export default function TreatmentsPage() {
               >
                 <h3 className="text-xl font-semibold tracking-tight">{p.name}</h3>
                 <p className="mt-1 text-xs text-white/70">{p.description}</p>
-                <p className="mt-4 text-sm text-white/80">{p.price}</p>
+                <p className="mt-4 text-3xl font-bold text-white">{p.price}</p>
+                <p className="text-xs text-white/70">{p.priceDetail}</p>
 
                 {/* Product visual placeholder */}
                 <div className="absolute inset-x-0 bottom-16 flex h-2/3 items-center justify-center">

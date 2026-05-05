@@ -6,6 +6,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
 import { FAQSchema } from '@/components/schema/FAQSchema';
 import { Button } from '@/components/ui/Button';
+import { WaitlistForm } from '@/components/waitlist/WaitlistForm';
 
 const FEATURES = [
   {
@@ -627,6 +628,32 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WAITLIST */}
+      <section
+        id="waitlist"
+        className="relative overflow-hidden bg-gradient-to-br from-[#3d1d6b] via-[#5a2785] to-[#2a134a] py-24 text-white scroll-mt-24"
+      >
+        <div className="container max-w-3xl">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+              Join the waitlist
+            </p>
+            <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
+              Be first in line when enrollment opens.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+              Tell us your state and what you&apos;re working through. We&apos;ll
+              notify you the moment Ketcare opens for new patients in your area —
+              and you&apos;ll get early-access pricing on the 6-session program.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-xl rounded-2xl bg-white/10 p-6 backdrop-blur-md md:p-8">
+            <WaitlistForm variant="dark" />
           </div>
         </div>
       </section>
