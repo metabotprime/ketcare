@@ -20,16 +20,16 @@ const PRODUCTS = [
   {
     name: 'Nasal Spray',
     description: 'Intranasal ketamine therapy',
-    price: '$600',
-    priceDetail: 'for the 6-session program',
+    price: '$129',
+    priceDetail: 'per session · 6-session program $774',
     href: '/#waitlist',
     image: '/images/product/nasal-spray.png',
   },
   {
     name: 'Lozenges',
     description: 'Sublingual ketamine therapy',
-    price: '$600',
-    priceDetail: 'for the 6-session program',
+    price: '$129',
+    priceDetail: 'per session · 6-session program $774',
     href: '/#waitlist',
     image: '/images/product/lozenges-pack.png',
   },
@@ -75,7 +75,7 @@ const INSURANCE_LOGOS = [
 const FAQS = [
   {
     q: 'Is there a price difference between Nasal and Tablets?',
-    a: "No. Both Ketcare Nasal Spray (intranasal) and Ketcare Lozenges (sublingual) are $600 for the complete 6-session program — same clinical supervision, same integration support, same price.",
+    a: 'No. Both Ketcare Nasal Spray (intranasal) and Ketcare Lozenges (sublingual) are $129 per session ($774 for the complete 6-session program) — same clinical supervision, same integration support, same price.',
   },
   {
     q: 'Is Ketcare covered by insurance?',

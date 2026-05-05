@@ -35,8 +35,8 @@ const PROVIDERS: Provider[] = [
   {
     name: 'Ketcare',
     homepage: '/',
-    starting: '$600',
-    starterProgram: '6-session program',
+    starting: '$129',
+    starterProgram: 'per session · 6-session program $774',
     formats: 'Nasal spray + Lozenges',
     insurance: 'Superbill only',
     hsaFsa: true,
@@ -131,8 +131,8 @@ const PROVIDER_DETAIL: Record<string, { positioning: string; whoItsFor: string; 
 
 const FAQS = [
   {
-    q: 'Why is Ketcare priced at $600 for the 6-session program?',
-    a: 'The 6-session episode of care is the smallest unit that lines up with how the clinical literature studies ketamine for depression and anxiety — Berman 2000 forward, the rapid antidepressant effect plateaus and consolidates over a series of administrations rather than after a single dose. Pricing the standard episode at $600 puts a complete program within reach of self-pay patients without forcing a long-term subscription commitment.',
+    q: 'Why $129 per session and $774 for the 6-session program?',
+    a: 'Per-session pricing matches how the clinical literature studies ketamine for depression and anxiety — Berman 2000 forward, the rapid antidepressant effect plateaus and consolidates over a series of administrations rather than after a single dose, with 6 sessions as the standard protocol unit. Pricing each session at $129 ($774 for the full 6-session program) keeps a complete episode of care under $800 without forcing a long-term subscription commitment, and undercuts the established premium provider in the category by roughly 40%.',
   },
   {
     q: 'Does Ketcare accept insurance?',
@@ -143,8 +143,8 @@ const FAQS = [
     a: 'Different patients respond to different routes of administration. Nasal spray onset is faster (typically within 10–15 minutes); lozenges build more gradually but are easier to dose-adjust between sessions. Mindbloom pairs lozenges with subcutaneous injectables; Innerwell, Better U, and Joyous offer lozenges or sublingual only. Ketcare is, as of the date above, the only at-home provider in this comparison offering both nasal spray and sublingual lozenges at the same per-session price.',
   },
   {
-    q: 'What is included in Ketcare’s $600 program?',
-    a: '6 supervised at-home sessions, intake and dosing visits with a licensed psychiatric clinician, structured integration coaching between sessions, and 24/7 patient-portal messaging with the care team. No required upgrade tiers or guide-coaching add-ons — the standard program is the complete program.',
+    q: 'What is included in Ketcare’s $774 program?',
+    a: '6 supervised at-home sessions at $129 each ($774 total), intake and dosing visits with a licensed psychiatric clinician, structured integration coaching between sessions, and 24/7 patient-portal messaging with the care team. No required upgrade tiers or guide-coaching add-ons — the standard program is the complete program.',
   },
   {
     q: 'How current is this comparison?',
@@ -203,8 +203,8 @@ export default function ComparePage() {
           </h2>
           <ul className="mt-8 space-y-4 text-base leading-relaxed text-foreground md:text-lg">
             <li className="flex gap-3">
-              <span className="font-semibold text-primary">Lowest 6-session price:</span>
-              <span>Ketcare ($600) and Better U (5-session at $500) lead on entry price. Mindbloom’s 6-session new-client program runs $1,290.</span>
+              <span className="font-semibold text-primary">Per-session pricing:</span>
+              <span>Ketcare is $129 per session ($774 for the 6-session program) — about 40% under Mindbloom’s $215 new-client rate, and 19% under Mindbloom’s $159 returning rate. Better U starts lower at $100/session in 5-pack packages.</span>
             </li>
             <li className="flex gap-3">
               <span className="font-semibold text-primary">Insurance accepted:</span>
@@ -381,7 +381,7 @@ export default function ComparePage() {
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground md:text-base">
                 <li className="flex gap-3">
                   <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary" aria-hidden="true" />
-                  <span>You want the lowest entry price for a complete 6-session episode of care.</span>
+                  <span>You want premium clinical care at roughly 40% under Mindbloom — $129 per session, $774 for the standard 6-session program.</span>
                 </li>
                 <li className="flex gap-3">
                   <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary" aria-hidden="true" />
