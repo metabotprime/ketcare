@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
@@ -29,13 +30,25 @@ export default function OurStoryPage() {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Our story</p>
-          <h1 className="section-display max-w-4xl">
-            We&rsquo;re here to <em>help you heal.</em>
+      <section className="relative overflow-hidden py-20 text-white md:py-28">
+        <Image
+          src="/images/photos/mountain-sunset.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30" aria-hidden="true" />
+        <div className="container relative z-10 max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+            Our story
+          </p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-medium leading-[1.1] drop-shadow md:text-5xl lg:text-6xl">
+            We&rsquo;re here to{' '}
+            <em className="font-serif font-normal italic">help you heal.</em>
           </h1>
-          <p className="section-subhead mt-6 max-w-3xl">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/90 drop-shadow md:text-lg">
             We are clinicians, technologists, patients, and researchers
             working together to expand access to evidence-based mental
             health care, beginning with guided ketamine therapy for anxiety
@@ -46,17 +59,30 @@ export default function OurStoryPage() {
 
       {/* Our mission is transformation */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Our mission is transformation.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            We believe mental health care should meet patients where they
-            are — at home, with the support they need, and at a price they
-            can sustain. Ketcare combines licensed clinical supervision,
-            evidence-based protocols, and structured integration to make
-            real, lasting change possible.
-          </p>
+        <div className="container max-w-6xl">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Our mission is transformation.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                We believe mental health care should meet patients where
+                they are — at home, with the support they need, and at a
+                price they can sustain. Ketcare combines licensed clinical
+                supervision, evidence-based protocols, and structured
+                integration to make real, lasting change possible.
+              </p>
+            </div>
+            <div className="relative aspect-square mx-auto w-full max-w-sm">
+              <Image
+                src="/images/product/tincture-bottle.png"
+                alt="Ketcare tincture"
+                fill
+                sizes="(max-width: 768px) 100vw, 384px"
+                className="object-contain"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -121,12 +147,20 @@ export default function OurStoryPage() {
       </section>
 
       {/* Supported by research */}
-      <section className="section-padding">
-        <div className="container max-w-3xl">
+      <section className="relative overflow-hidden bg-[#0a1628] py-20 text-white md:py-24">
+        <Image
+          src="/images/photos/neurons-blue.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="absolute inset-0 object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/70 to-transparent" aria-hidden="true" />
+        <div className="container relative z-10 max-w-3xl">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Supported by research.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-lg leading-relaxed text-white/85">
             Ketcare&rsquo;s protocols are built on 25+ years of clinical
             research on ketamine for depression and anxiety, starting with
             Berman et al. (2000). Visit our research page to see the
@@ -136,7 +170,7 @@ export default function OurStoryPage() {
             <Button variant="outline" asChild>
               <Link
                 href="/research/"
-                className="rounded-full border-primary/40 px-6 text-primary"
+                className="rounded-full border-white/40 bg-white/10 px-6 text-white hover:bg-white/20"
               >
                 See the research →
               </Link>

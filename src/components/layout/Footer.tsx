@@ -6,7 +6,7 @@ const TREATMENT_LINKS = [
   { href: '/why-ketamine/', label: 'Why Ketamine' },
   { href: '/research/', label: 'Research' },
   { href: '/reviews/', label: 'Reviews' },
-  { href: '/pricing/', label: 'Pricing' },
+  { href: '/pricing/', label: 'Treatments' },
 ];
 
 const KETCARE_LINKS = [{ href: '/blog/', label: 'Blog' }];

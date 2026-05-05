@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { href: '/why-ketcare/', label: 'Program' },
   { href: '/why-ketamine/', label: 'Why Ketamine' },
   { href: '/reviews/', label: 'Reviews' },
-  { href: '/pricing/', label: 'Pricing' },
+  { href: '/pricing/', label: 'Treatments' },
 ];
 
 type NavigationProps = {

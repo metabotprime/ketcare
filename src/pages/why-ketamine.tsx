@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { AlertTriangle, Check } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
@@ -108,13 +109,25 @@ export default function WhyKetaminePage() {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Why Ketamine</p>
-          <h1 className="section-display max-w-4xl">
-            Harness the potential <em>of ketamine.</em>
+      <section className="relative overflow-hidden bg-[#0a0420] py-20 text-white md:py-28">
+        <Image
+          src="/images/photos/neurons-purple.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0420]/95 via-[#0a0420]/70 to-transparent" aria-hidden="true" />
+        <div className="container relative z-10 max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+            Why Ketamine
+          </p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-medium leading-[1.1] md:text-5xl lg:text-6xl">
+            Harness the potential{' '}
+            <em className="font-serif font-normal italic">of ketamine.</em>
           </h1>
-          <p className="section-subhead mt-6 max-w-2xl">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
             Ketamine is a revolutionary treatment for the mind. It can
             quickly—sometimes within an hour or two—alleviate the
             effects of anxiety, depression, and related conditions.
@@ -124,18 +137,31 @@ export default function WhyKetaminePage() {
 
       {/* How does it function */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            How does it function?
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Ketamine therapy enables fresh perspectives that can assist us in
-            processing and moving beyond pain. Unlike traditional
-            antidepressants which act on serotonin and take weeks to show
-            effect, ketamine acts on the glutamate system and works on a
-            faster timescale, opening a window of neuroplasticity in which
-            real change becomes possible.
-          </p>
+        <div className="container max-w-6xl">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                How does it function?
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                Ketamine therapy enables fresh perspectives that can assist
+                us in processing and moving beyond pain. Unlike traditional
+                antidepressants which act on serotonin and take weeks to
+                show effect, ketamine acts on the glutamate system and
+                works on a faster timescale, opening a window of
+                neuroplasticity in which real change becomes possible.
+              </p>
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/photos/lying-down-purple.jpg"
+                alt="A guided ketamine session"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -174,19 +200,32 @@ export default function WhyKetaminePage() {
 
       {/* Important Safety Information */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Important Safety Information
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            The FDA has noted that at-home use of compounded ketamine may
-            carry additional risks due to the absence of an on-site
-            healthcare provider to monitor for adverse effects, such as
-            sedation or dissociation. Ketcare’s protocols are carefully
-            designed to reduce the likelihood of side effects or adverse
-            events and must be strictly followed. Ketamine should only be
-            used as prescribed by the treating clinician.
-          </p>
+        <div className="container max-w-5xl">
+          <div className="grid items-start gap-10 md:grid-cols-[2fr,1fr]">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Important Safety Information
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                The FDA has noted that at-home use of compounded ketamine may
+                carry additional risks due to the absence of an on-site
+                healthcare provider to monitor for adverse effects, such as
+                sedation or dissociation. Ketcare&apos;s protocols are
+                carefully designed to reduce the likelihood of side effects
+                or adverse events and must be strictly followed. Ketamine
+                should only be used as prescribed by the treating clinician.
+              </p>
+            </div>
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/photos/pills-journal.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 30vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
 
           <h3 className="mt-12 text-xl font-semibold tracking-tight">
             Possible side effects include:
@@ -291,7 +330,16 @@ export default function WhyKetaminePage() {
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">
                 Ketcare Tablets
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              <div className="relative mt-6 h-48">
+                <Image
+                  src="/images/product/lozenges-pack.png"
+                  alt="Ketcare lozenges"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain"
+                />
+              </div>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 Sublingual ketamine treatment dissolved under the tongue.
                 Discreet, precisely dosed, and prescribed under licensed
                 clinical supervision.
@@ -304,7 +352,16 @@ export default function WhyKetaminePage() {
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">
                 Ketcare Nasal
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              <div className="relative mt-6 h-48">
+                <Image
+                  src="/images/product/nasal-spray.png"
+                  alt="Ketcare nasal spray"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain"
+                />
+              </div>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 Intranasal ketamine treatment for faster onset. Same
                 clinical supervision and integration support, different
                 delivery method.

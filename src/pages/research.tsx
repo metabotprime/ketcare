@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink, Check } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
@@ -91,14 +92,27 @@ export default function ResearchPage() {
       />
 
       {/* Hero — large stat */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Research</p>
-          <h1 className="section-display max-w-4xl">
+      <section className="relative overflow-hidden bg-[#0a0420] py-20 text-white md:py-28">
+        <Image
+          src="/images/photos/brain-particles.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0420]/95 via-[#0a0420]/70 to-transparent" aria-hidden="true" />
+        <div className="container relative z-10 max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+            Research
+          </p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-medium leading-[1.1] md:text-5xl lg:text-6xl">
             The two largest studies of ketamine therapy{' '}
-            <em>tracked outcomes from over 10,000 Ketcare clients.</em>
+            <em className="font-serif font-normal italic">
+              tracked outcomes from over 10,000 Ketcare clients.
+            </em>
           </h1>
-          <p className="section-subhead mt-6 max-w-2xl">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
             In a landmark peer-reviewed study, Ketcare delivered significant
             improvements in anxiety and depression — at rates exceeding
             traditional psychotherapy, SSRI antidepressants, and IV
@@ -159,8 +173,15 @@ export default function ResearchPage() {
       </section>
 
       {/* Study summaries */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-3xl">
+      <section className="relative overflow-hidden section-padding bg-secondary">
+        <Image
+          src="/images/photos/plexus-purple.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="absolute inset-0 object-cover opacity-15 mix-blend-multiply"
+        />
+        <div className="container relative z-10 max-w-3xl">
           <div className="mb-12 max-w-2xl">
             <p className="section-eyebrow mb-3">The literature</p>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">

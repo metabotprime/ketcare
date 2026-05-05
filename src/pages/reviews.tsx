@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Star, Truck, Heart, ShieldCheck } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
@@ -70,12 +71,25 @@ export default function ReviewsPage() {
       <ReviewSchema reviews={reviewSchemaData} />
 
       {/* Hero */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Reviews</p>
-          <h1 className="section-display max-w-4xl">
+      <section className="relative overflow-hidden py-20 text-white md:py-28">
+        <Image
+          src="/images/photos/canyon-purple.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" aria-hidden="true" />
+        <div className="container relative z-10 max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+            Reviews
+          </p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-medium leading-[1.1] drop-shadow md:text-5xl lg:text-6xl">
             Our guiding star:{' '}
-            <em>delivering your five-star experience.</em>
+            <em className="font-serif font-normal italic">
+              delivering your five-star experience.
+            </em>
           </h1>
           <div className="mt-8 flex items-center gap-3">
             <div className="flex gap-1 text-accent">
@@ -87,7 +101,7 @@ export default function ReviewsPage() {
                 />
               ))}
             </div>
-            <p className="text-base font-medium text-foreground">
+            <p className="text-base font-medium text-white/95 drop-shadow">
               4.7/5 from {TESTIMONIALS.length}+ verified patient reviews
             </p>
           </div>

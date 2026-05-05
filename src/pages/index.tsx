@@ -10,20 +10,19 @@ import { WaitlistForm } from '@/components/waitlist/WaitlistForm';
 
 const FEATURES = [
   {
-    image: '/wp-content/uploads/2025/09/c1.png',
+    image: '/images/photos/woman-couch-phone.jpg',
     text: 'Home-based ease, savings, and comfort',
   },
   {
-    image: '/wp-content/uploads/2025/09/man-2.png',
+    image: '/images/photos/hikers-mountain.jpg',
     text: 'A support network beyond medicine alone',
   },
   {
-    image:
-      '/wp-content/uploads/2025/09/Gemini_Generated_Image_a6vzuaa6vzuaa6vz.png',
+    image: '/images/photos/neurons-purple.jpg',
     text: 'Clinician-trusted neuroplasticity therapy designed to restore your mind',
   },
   {
-    image: '/wp-content/uploads/2025/09/featured-image-1760544496309.png',
+    image: '/images/photos/mountain-sunset.jpg',
     text: 'Leading U.S. provider supported by scientific research',
   },
 ];
@@ -189,12 +188,23 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-[680px] overflow-hidden md:min-h-[760px]">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/photos/hero-lavender-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="/images/video/hero-lavender.mp4" type="video/mp4" />
+        </video>
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#cdb8e3] via-[#9a72c4] to-[#3d1d6b]"
+          className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-[#3d1d6b]/70"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(255,255,255,0.18),transparent_70%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(255,255,255,0.12),transparent_70%)]"
           aria-hidden="true"
         />
         <div className="relative z-10 flex min-h-[680px] flex-col md:min-h-[760px]">
@@ -297,25 +307,40 @@ export default function Home() {
       <section className="section-padding bg-secondary">
         <div className="container max-w-6xl">
           <div className="grid gap-6 md:grid-cols-3">
-            <article className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1a0b2e] via-[#3d1d6b] to-[#0a0510] p-8 text-white md:col-span-1">
-              <h3 className="text-2xl font-semibold tracking-tight">
-                Transformative at-home experience.
-              </h3>
-              <p className="mt-2 text-2xl font-semibold tracking-tight">
-                Premium guidance.
-              </p>
-              <p className="mt-8 text-sm text-white/70">
-                Learn why 44% of clients choose Intranasal →
-              </p>
-              <div className="mt-12 h-32 rounded-lg bg-gradient-to-r from-purple-500/30 via-purple-700/50 to-purple-900/30 blur-sm" aria-hidden="true" />
+            <article className="relative overflow-hidden rounded-xl p-8 text-white md:col-span-1">
+              <Image
+                src="/images/photos/woman-palms-peaceful.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1a0b2e]/85 via-[#3d1d6b]/80 to-[#0a0510]/90" aria-hidden="true" />
+              <div className="relative">
+                <h3 className="text-2xl font-semibold tracking-tight">
+                  Transformative at-home experience.
+                </h3>
+                <p className="mt-2 text-2xl font-semibold tracking-tight">
+                  Premium guidance.
+                </p>
+                <p className="mt-8 text-sm text-white/70">
+                  Learn why 44% of clients choose Intranasal →
+                </p>
+              </div>
             </article>
             <article className="rounded-xl border border-border bg-card p-8">
               <p className="text-sm font-semibold tracking-tight">Nasal Spray</p>
               <p className="mt-1 text-xs text-muted-foreground">
                 Intranasal ketamine therapy
               </p>
-              <div className="mt-8 flex h-48 items-center justify-center">
-                <div className="h-40 w-24 rounded-2xl bg-gradient-to-b from-purple-200/40 to-purple-400/30" aria-hidden="true" />
+              <div className="relative mt-8 h-48">
+                <Image
+                  src="/images/product/nasal-spray.png"
+                  alt="Ketcare nasal spray"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-contain"
+                />
               </div>
             </article>
             <article className="rounded-xl border border-border bg-card p-8">
@@ -323,8 +348,14 @@ export default function Home() {
               <p className="mt-1 text-xs text-muted-foreground">
                 Sublingual ketamine therapy
               </p>
-              <div className="mt-8 flex h-48 items-center justify-center">
-                <div className="h-32 w-40 rounded-lg bg-gradient-to-b from-purple-200/40 to-purple-400/30" aria-hidden="true" />
+              <div className="relative mt-8 h-48">
+                <Image
+                  src="/images/product/lozenges-pack.png"
+                  alt="Ketcare lozenges"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-contain"
+                />
               </div>
             </article>
           </div>
@@ -375,7 +406,14 @@ export default function Home() {
 
       {/* STATS — purple background */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#3d1d6b] via-[#5a2785] to-[#2a134a] py-24 text-white">
-        <div className="container max-w-5xl">
+        <Image
+          src="/images/photos/neon-waves.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="absolute inset-0 object-cover opacity-25 mix-blend-screen"
+        />
+        <div className="container relative z-10 max-w-5xl">
           <div className="grid gap-8 md:grid-cols-3">
             {STATS.map((s) => (
               <div key={s.value} className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
@@ -393,7 +431,15 @@ export default function Home() {
 
       {/* NEUROPLASTICITY — dark navy */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0a1628] via-[#142a4a] to-[#1a3560] py-24 text-white">
-        <div className="container max-w-5xl">
+        <Image
+          src="/images/photos/brain-particles.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="absolute inset-0 object-cover opacity-30 mix-blend-screen"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/70 to-transparent" aria-hidden="true" />
+        <div className="container relative z-10 max-w-5xl">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
             The new standard in mental health
           </p>
@@ -487,7 +533,7 @@ export default function Home() {
             <div className="flex justify-center md:col-span-1">
               <div className="relative aspect-square w-56 overflow-hidden rounded-full bg-white/30 backdrop-blur md:w-64">
                 <Image
-                  src="/wp-content/uploads/2025/09/woman1.png"
+                  src="/images/photos/woman-laptop-smiling.jpg"
                   alt=""
                   fill
                   sizes="256px"

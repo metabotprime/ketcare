@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { Phone, Mail, MessageCircle, AlertTriangle } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
@@ -31,17 +32,31 @@ export default function ContactPage() {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Contact</p>
-          <h1 className="section-display max-w-4xl">
-            Contact <em>us.</em>
-          </h1>
-          <p className="section-subhead mt-6 max-w-2xl">
-            Questions about treatment, our approach, or whether Ketcare is
-            right for you. We respond personally — usually within one
-            business day.
-          </p>
+      <section className="bg-secondary">
+        <div className="container max-w-6xl">
+          <div className="grid items-center gap-10 py-16 md:grid-cols-2 md:gap-16 md:py-24">
+            <div>
+              <p className="section-eyebrow mb-4">Contact</p>
+              <h1 className="section-display max-w-xl">
+                Contact <em>us.</em>
+              </h1>
+              <p className="section-subhead mt-6 max-w-xl">
+                Questions about treatment, our approach, or whether Ketcare
+                is right for you. We respond personally — usually within
+                one business day.
+              </p>
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/photos/telehealth-doctor.jpg"
+                alt="A clinician on a virtual visit"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

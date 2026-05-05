@@ -23,6 +23,7 @@ const PRODUCTS = [
     price: '$600',
     priceDetail: 'for the 6-session program',
     href: '/#waitlist',
+    image: '/images/product/nasal-spray.png',
   },
   {
     name: 'Lozenges',
@@ -30,33 +31,33 @@ const PRODUCTS = [
     price: '$600',
     priceDetail: 'for the 6-session program',
     href: '/#waitlist',
+    image: '/images/product/lozenges-pack.png',
   },
 ];
 
 const INCLUDED = [
   {
-    image: '/wp-content/uploads/2025/09/c1.png',
+    image: '/images/photos/eyemask-session.jpg',
     title: '6 Ketcare sessions',
     body: 'Inclusive of medicine doses and available programs to support your transformation.',
   },
   {
-    image: '/wp-content/uploads/2025/09/man-2.png',
+    image: '/images/photos/telehealth-doctor.jpg',
     title: 'Clinician consults',
     body: "We'll ensure you're making progress and adjust your care plan if needed.",
   },
   {
-    image:
-      '/wp-content/uploads/2025/09/Gemini_Generated_Image_a6vzuaa6vzuaa6vz.png',
+    image: '/images/photos/woman-palms-peaceful.jpg',
     title: 'Personalized care',
     body: 'We offer Tablet and Injectable treatments to enable meaningful therapeutic experiences.',
   },
   {
-    image: '/wp-content/uploads/2025/09/featured-image-1760544496309.png',
+    image: '/images/photos/woman-couch-phone.jpg',
     title: '24/7 Patient Portal — always in touch with your care team',
     body: 'Whether you need quick answers or ongoing support, our 24/7 patient portal provides a seamless way to communicate with your doctor and support team. This dedicated platform ensures you have a reliable and welcoming space to address your needs at any time, day or night.',
   },
   {
-    image: '/wp-content/uploads/2025/09/woman1.png',
+    image: '/images/photos/hikers-mountain.jpg',
     title: 'Your Personal Session Guide (Optional)',
     body: 'Not essential, but perfect if you want that extra layer of support — for a modest additional fee, our expert guides become your dedicated companions, offering tailored prep for every session, seamless integration into your routine, and ongoing encouragement to help you shine with confidence.',
   },
@@ -130,9 +131,14 @@ export default function TreatmentsPage() {
                 <p className="mt-4 text-3xl font-bold text-white">{p.price}</p>
                 <p className="text-xs text-white/70">{p.priceDetail}</p>
 
-                {/* Product visual placeholder */}
-                <div className="absolute inset-x-0 bottom-16 flex h-2/3 items-center justify-center">
-                  <div className="h-40 w-32 rounded-2xl bg-gradient-to-b from-white/30 to-white/5 blur-md" aria-hidden="true" />
+                <div className="absolute inset-x-0 bottom-16 top-28 flex items-center justify-center">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    width={300}
+                    height={300}
+                    className="h-full w-auto object-contain"
+                  />
                 </div>
 
                 <div className="absolute bottom-6 left-6 right-6 flex justify-center">
@@ -206,38 +212,51 @@ export default function TreatmentsPage() {
 
       {/* CTA — Am I a candidate */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-5xl">
-            Experience fast, life-changing relief with guided at-home ketamine therapy.
-          </h2>
+        <div className="container max-w-6xl">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-5xl">
+                Experience fast, life-changing relief with guided at-home ketamine therapy.
+              </h2>
 
-          <div className="mt-6 flex items-center gap-3">
-            <div className="flex gap-1 text-accent">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-5 w-5 fill-current"
-                  aria-hidden="true"
-                />
-              ))}
+              <div className="mt-6 flex items-center gap-3">
+                <div className="flex gap-1 text-accent">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 fill-current"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <p className="text-sm font-medium text-foreground">
+                  4.7/5 rating with 200+ reviews
+                </p>
+              </div>
+
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Ketcare comprehensive, science-backed programs are designed to
+                amplify and sustain your healing. Ongoing clinical care,
+                coaching, content, and community make all the difference.
+              </p>
+
+              <div className="mt-8">
+                <Button size="lg" asChild>
+                  <Link href="/contact/" className="rounded-full px-8">
+                    Am I a candidate
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <p className="text-sm font-medium text-foreground">
-              4.7/5 rating with 200+ reviews
-            </p>
-          </div>
-
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Ketcare comprehensive, science-backed programs are designed to
-            amplify and sustain your healing. Ongoing clinical care,
-            coaching, content, and community make all the difference.
-          </p>
-
-          <div className="mt-8">
-            <Button size="lg" asChild>
-              <Link href="/contact/" className="rounded-full px-8">
-                Am I a candidate
-              </Link>
-            </Button>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/photos/wellness-water.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
