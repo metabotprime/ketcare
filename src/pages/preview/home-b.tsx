@@ -78,7 +78,7 @@ export default function HomeBPreview() {
               >
                 <h3 className="font-semibold tracking-tight">{c.name}</h3>
                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
-                  {c.description}
+                  {c.metaDescription}
                 </p>
               </Link>
             ))}
