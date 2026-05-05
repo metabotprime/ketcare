@@ -93,10 +93,10 @@ export function LegalPage({
             <p className="mt-2 text-muted-foreground">
               Email{' '}
               <a
-                href="mailto:privacy@ketcare.com"
+                href="mailto:care@ketcare.com"
                 className="text-primary hover:underline"
               >
-                privacy@ketcare.com
+                care@ketcare.com
               </a>{' '}
               or visit{' '}
               <Link
