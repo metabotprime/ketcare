@@ -1,83 +1,214 @@
 import type { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Check, Star } from 'lucide-react';
+import { Star, Plus } from 'lucide-react';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema';
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema';
+import { FAQSchema } from '@/components/schema/FAQSchema';
 import { Button } from '@/components/ui/Button';
 
 /**
- * Replicates live ketcare.com/pricing/:
- *   - "Transformations that won't cost a fortune" hero
- *   - Tablet vs Injectable treatments
- *   - 24/7 patient portal
- *   - 4.7/5 rating with 200+ reviews
- *   - Pricing FAQs (cost is same regardless of medication, insurance,
- *     HSA/FSA acceptance)
- *   - Insurance highlights: Save with insurance, Use HSA/FSA, No hidden fees
+ * Treatments / Pricing page.
+ *
+ * Replaces the previous pricing page with the live ketcare.com treatments
+ * design: two product cards (Nasal Spray + Lozenges), "What's included"
+ * 5-item list, insurance logo grid, CTA + rating, and FAQs.
  */
 
-const PRICING_HIGHLIGHTS = [
+const PRODUCTS = [
   {
-    title: 'Save using insurance',
-    body: 'Ketcare does not accept insurance directly, but after your first virtual visit we provide a superbill — an itemized invoice — you can submit to your insurer for potential out-of-network reimbursement.',
+    name: 'Nasal Spray',
+    description: 'Intranasal ketamine therapy',
+    price: 'As low as $595/M',
+    href: '#',
   },
   {
-    title: 'Use your HSA/FSA',
-    body: 'Some Ketcare treatment services may qualify as eligible expenses. Try using your HSA or FSA card during checkout. If your card isn’t accepted, contact us about reimbursement options.',
+    name: 'Lozenges',
+    description: 'Sublingual ketamine therapy',
+    price: 'As low as $595/M',
+    href: '#',
+  },
+];
+
+const INCLUDED = [
+  {
+    image: '/wp-content/uploads/2025/09/c1.png',
+    title: '6 Ketcare sessions',
+    body: 'Inclusive of medicine doses and available programs to support your transformation.',
   },
   {
-    title: 'No hidden fees',
-    body: 'The price you see is the price you pay. No surprise add-ons, no upsell pressure. Sessions, intake, integration coaching, clinician support — all included.',
+    image: '/wp-content/uploads/2025/09/man-2.png',
+    title: 'Clinician consults',
+    body: "We'll ensure you're making progress and adjust your care plan if needed.",
   },
+  {
+    image:
+      '/wp-content/uploads/2025/09/Gemini_Generated_Image_a6vzuaa6vzuaa6vz.png',
+    title: 'Personalized care',
+    body: 'We offer Tablet and Injectable treatments to enable meaningful therapeutic experiences.',
+  },
+  {
+    image: '/wp-content/uploads/2025/09/featured-image-1760544496309.png',
+    title: '24/7 Patient Portal — always in touch with your care team',
+    body: 'Whether you need quick answers or ongoing support, our 24/7 patient portal provides a seamless way to communicate with your doctor and support team. This dedicated platform ensures you have a reliable and welcoming space to address your needs at any time, day or night.',
+  },
+  {
+    image: '/wp-content/uploads/2025/09/woman1.png',
+    title: 'Your Personal Session Guide (Optional)',
+    body: 'Not essential, but perfect if you want that extra layer of support — for a modest additional fee, our expert guides become your dedicated companions, offering tailored prep for every session, seamless integration into your routine, and ongoing encouragement to help you shine with confidence.',
+  },
+];
+
+const INSURANCE_LOGOS = [
+  'Anthem',
+  'Aetna',
+  'United Healthcare',
+  'Cigna',
+  'Kaiser Permanente',
+  'Elevance Health',
 ];
 
 const FAQS = [
   {
-    q: 'Are tablets and injectables priced differently?',
-    a: 'No. The cost of Ketcare treatment is the same regardless of medication type — whether you receive Ketcare Tablets (sublingual) or Ketcare Nasal (intranasal).',
+    q: 'Is there a price difference between Nasal and Tablets?',
+    a: 'No. The cost of Ketcare treatment is the same regardless of medication type — whether you receive Ketcare Nasal Spray (intranasal) or Ketcare Lozenges (sublingual).',
   },
   {
-    q: 'Does Ketcare accept insurance?',
-    a: 'Ketcare does not accept insurance at this time. However, some clients are able to get reimbursed by their insurance provider. After your first virtual visit, we can provide you with a superbill (an itemized invoice) that you can submit. If you would like to check with your insurer about possible out-of-network benefits before treatment, we encourage you to do so.',
+    q: 'Is Ketcare covered by insurance?',
+    a: 'Ketcare does not accept insurance directly at this time. However, after your first virtual visit, we provide a superbill (an itemized invoice) you can submit to your insurer for potential out-of-network reimbursement. Many of our clients have successfully been reimbursed by insurers including Anthem, Aetna, United Healthcare, Cigna, Kaiser Permanente, and Elevance Health.',
   },
   {
-    q: 'Can I use my HSA or FSA?',
-    a: 'As some Ketcare treatment services could be considered qualified expenses, it may be possible to utilize HSAs or FSAs to pay for treatment. To determine if these services are covered, try and utilize these cards during the checkout process. If you’re unable to make a payment with your HSA or FSA card, contact us to discuss alternative reimbursement.',
+    q: 'Does my HSA/FSA cover Ketcare treatment?',
+    a: 'As some Ketcare treatment services may be considered qualified expenses, it is often possible to use HSA or FSA funds. Try using your card during checkout. If your card is not accepted, contact us about alternative reimbursement options.',
+  },
+  {
+    q: 'How long does it take to see results?',
+    a: 'Ketamine is unique among mental health treatments in that effects can appear within hours and often peak 24 to 48 hours after a session. Many clients notice meaningful improvement within the first few sessions, with sustained progress over the course of a complete program.',
+  },
+  {
+    q: 'Is it required for my sessions to be administered with a peer monitor?',
+    a: 'Yes. For your safety, every Ketcare session requires a peer treatment monitor to be physically present with you during administration. This is a non-negotiable part of our protocol and is in line with FDA-recommended at-home treatment guidelines.',
   },
 ];
 
-export default function PricingPage() {
+export default function TreatmentsPage() {
   return (
     <>
       <SEOHead
-        title="Ketamine Therapy Pricing | Ketcare"
-        description="Affordable, transparent pricing for at-home ketamine therapy. Save with insurance reimbursement, HSA/FSA, and no hidden fees."
+        title="Ketcare Treatments | At-Home Ketamine Therapy"
+        description="Compare Ketcare's Nasal Spray and Lozenge ketamine treatments. See what's included, insurance reimbursement options, and answers to common questions."
         path="/pricing/"
       />
       <OrganizationSchema />
       <BreadcrumbSchema
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Pricing', path: '/pricing/' },
+          { name: 'Treatments', path: '/pricing/' },
         ]}
       />
+      <FAQSchema items={FAQS.map((f) => ({ question: f.q, answer: f.a }))} />
 
-      {/* Hero */}
+      {/* Treatment options — two product cards */}
       <section className="section-padding bg-secondary">
         <div className="container max-w-5xl">
-          <p className="section-eyebrow mb-4">Pricing</p>
+          <p className="section-eyebrow mb-4">Treatments</p>
           <h1 className="section-display max-w-4xl">
-            Transformations that{' '}
-            <em>won&apos;t cost a fortune.</em>
+            Choose your <em>treatment.</em>
           </h1>
-          <p className="section-subhead mt-6 max-w-2xl">
-            We offer Tablet and Injectable treatments to enable meaningful
-            therapeutic experiences — at a price designed to be sustainable
-            for the long term.
-          </p>
 
-          <div className="mt-8 flex items-center gap-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {PRODUCTS.map((p) => (
+              <article
+                key={p.name}
+                className="relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-[#2a1645] via-[#5a2785] to-[#1a0a30] p-6 text-white"
+              >
+                <h3 className="text-xl font-semibold tracking-tight">{p.name}</h3>
+                <p className="mt-1 text-xs text-white/70">{p.description}</p>
+                <p className="mt-4 text-sm text-white/80">{p.price}</p>
+
+                {/* Product visual placeholder */}
+                <div className="absolute inset-x-0 bottom-16 flex h-2/3 items-center justify-center">
+                  <div className="h-40 w-32 rounded-2xl bg-gradient-to-b from-white/30 to-white/5 blur-md" aria-hidden="true" />
+                </div>
+
+                <div className="absolute bottom-6 left-6 right-6 flex justify-center">
+                  <Link
+                    href={p.href}
+                    className="inline-flex h-10 items-center justify-center rounded-full bg-black px-6 text-sm font-medium text-white transition-colors hover:bg-black/80"
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's included? */}
+      <section className="section-padding">
+        <div className="container max-w-3xl">
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+            What&apos;s included?
+          </h2>
+
+          <ul className="mt-12 space-y-8">
+            {INCLUDED.map((item) => (
+              <li key={item.title} className="flex gap-5">
+                <div className="relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-md bg-muted md:h-20 md:w-28">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 96px, 112px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold tracking-tight md:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {item.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Insurance reimbursement */}
+      <section className="section-padding bg-secondary">
+        <div className="container max-w-5xl">
+          <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
+            Save through reimbursements with these insurers and many more.
+          </h2>
+          <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+            {INSURANCE_LOGOS.map((name) => (
+              <div
+                key={name}
+                className="flex h-16 items-center justify-center rounded-md bg-card px-4 text-center text-sm font-semibold tracking-tight text-muted-foreground"
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs text-muted-foreground">
+            Logo placeholders — Anthem, Aetna, United Healthcare, Cigna, Kaiser Permanente, Elevance Health. Real logos will replace these on launch.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA — Am I a candidate */}
+      <section className="section-padding">
+        <div className="container max-w-3xl">
+          <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-5xl">
+            Experience fast, life-changing relief with guided at-home ketamine therapy.
+          </h2>
+
+          <div className="mt-6 flex items-center gap-3">
             <div className="flex gap-1 text-accent">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
@@ -88,151 +219,50 @@ export default function PricingPage() {
               ))}
             </div>
             <p className="text-sm font-medium text-foreground">
-              4.7/5 with 200+ reviews
+              4.7/5 rating with 200+ reviews
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Two product offerings */}
-      <section className="section-padding">
-        <div className="container max-w-5xl">
-          <div className="mb-10 max-w-2xl">
-            <p className="section-eyebrow mb-3">Treatment options</p>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Two routes,{' '}
-              <em className="font-serif font-normal italic">same price.</em>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <article className="rounded-lg border border-border bg-card p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                Sublingual
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                Ketcare Tablets
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Sublingual ketamine treatment dissolved under the tongue.
-                Discreet, precisely dosed, and prescribed under licensed
-                clinical supervision.
-              </p>
-            </article>
-            <article className="rounded-lg border border-border bg-card p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                Intranasal
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                Ketcare Nasal
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Intranasal ketamine treatment for faster onset. Same
-                clinical supervision and integration support, different
-                delivery method.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* Comprehensive program */}
-      <section className="section-padding bg-secondary">
-        <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            More than a prescription.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
             Ketcare comprehensive, science-backed programs are designed to
             amplify and sustain your healing. Ongoing clinical care,
             coaching, content, and community make all the difference.
           </p>
 
-          <div className="mt-12 rounded-lg border border-border bg-card p-8">
-            <h3 className="text-xl font-semibold tracking-tight">
-              24/7 patient portal
-            </h3>
-            <p className="mt-3 leading-relaxed text-muted-foreground">
-              Whether you need quick answers or ongoing support, our 24/7
-              patient portal provides a seamless way to communicate with
-              your doctor and support team. This dedicated platform ensures
-              you have a reliable and welcoming space to address your needs
-              at any time, day or night.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing highlights */}
-      <section className="section-padding">
-        <div className="container max-w-5xl">
-          <div className="mb-10 max-w-2xl">
-            <p className="section-eyebrow mb-3">How to save</p>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Save through reimbursements with these insurers and many more.
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {PRICING_HIGHLIGHTS.map((h) => (
-              <article
-                key={h.title}
-                className="rounded-lg border border-border bg-card p-6"
-              >
-                <Check
-                  className="h-6 w-6 text-primary"
-                  aria-hidden="true"
-                />
-                <h3 className="mt-4 text-lg font-semibold tracking-tight">
-                  {h.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {h.body}
-                </p>
-              </article>
-            ))}
+          <div className="mt-8">
+            <Button size="lg" asChild>
+              <Link href="/contact/" className="rounded-full px-8">
+                Am I a candidate
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* FAQs */}
       <section className="section-padding bg-secondary">
-        <div className="container max-w-3xl">
-          <div className="mb-10">
-            <p className="section-eyebrow mb-3">FAQs</p>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Frequently asked questions.
-            </h2>
-          </div>
-          <dl className="space-y-6">
-            {FAQS.map((faq) => (
-              <div
-                key={faq.q}
-                className="rounded-lg border border-border bg-card p-6"
-              >
-                <dt className="text-lg font-semibold tracking-tight">
-                  {faq.q}
-                </dt>
-                <dd className="mt-3 text-base leading-relaxed text-muted-foreground">
-                  {faq.a}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-padding">
-        <div className="container max-w-3xl text-center">
-          <h2 className="section-display">
-            Ready to begin? <em>Join the waitlist.</em>
+        <div className="container max-w-4xl">
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
+            FAQs
           </h2>
-          <p className="section-subhead mt-6">
-            We&apos;ll notify you the moment Ketcare opens for new patients.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Button size="lg" variant="accent" asChild>
-              <Link href="/#waitlist">Join the waitlist</Link>
-            </Button>
+          <div className="mt-10 space-y-3">
+            {FAQS.map((faq) => (
+              <details
+                key={faq.q}
+                className="group rounded-lg border border-border bg-card p-5"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-foreground">
+                  <span>{faq.q}</span>
+                  <Plus
+                    className="h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform group-open:rotate-45"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
